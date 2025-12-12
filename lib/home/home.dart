@@ -18,6 +18,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         body: TabBarView(children: [
           HomePage(),
+          /// home page
           Container(),
           Container(),
           Container(),
