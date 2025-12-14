@@ -1,6 +1,8 @@
 import 'package:boxapp/home/home_reservation.dart';
 import 'package:flutter/material.dart';
 
+import 'activebooking.dart';
+
 class Reservations extends StatefulWidget {
   const Reservations({super.key});
 
@@ -69,7 +71,7 @@ class _Reservations extends State<Reservations> {
         body: TabBarView(
           children: [
             HomeReservation(),
-            Container(),
+            ActiveBooking(),
             Container(),
           ],
         ),
