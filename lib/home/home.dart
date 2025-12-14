@@ -3,6 +3,8 @@ import 'package:boxapp/home/reservations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../wallet/view_wallet.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -23,7 +25,7 @@ class _HomeState extends State<Home> {
 
           /// home page
           Reservations(),
-          Container(),
+          ViewWallet(),
           Container(),
         ]),
         bottomNavigationBar: Padding(

@@ -1,3 +1,4 @@
+import 'package:boxapp/home/bookingcompleted.dart';
 import 'package:boxapp/home/home_reservation.dart';
 import 'package:flutter/material.dart';
 
@@ -72,7 +73,7 @@ class _Reservations extends State<Reservations> {
           children: [
             HomeReservation(),
             ActiveBooking(),
-            Container(),
+            BookingCompleted(),
           ],
         ),
       ),
