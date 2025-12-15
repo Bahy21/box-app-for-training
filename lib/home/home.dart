@@ -1,5 +1,6 @@
 import 'package:boxapp/home/home_page.dart';
 import 'package:boxapp/home/reservations.dart';
+import 'package:boxapp/settings/view_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -26,7 +27,7 @@ class _HomeState extends State<Home> {
           /// home page
           Reservations(),
           ViewWallet(),
-          Container(),
+          ViewSettings(),
         ]),
         bottomNavigationBar: Padding(
           padding: EdgeInsets.only(bottom: 10),
