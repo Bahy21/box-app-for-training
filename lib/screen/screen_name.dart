@@ -144,7 +144,7 @@ class ScreenName extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 20),
                                 Center(
-                                  child:  Text(
+                                  child: Text(
                                     "وثق حسابك عبر النفاذ الوطني",
                                     style: TextStyle(
                                         fontSize: 20,
