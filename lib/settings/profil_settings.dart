@@ -1,3 +1,4 @@
+import 'package:boxapp/settings/point_settings.dart';
 import 'package:flutter/material.dart';
 import '../custem_text_filed.dart';
 
@@ -121,14 +122,41 @@ class ProfileSettings extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            CustomTextField(
-              suffixIcon: Icon(
-                Icons.keyboard_arrow_down_sharp,
-                size: 30,
-                color: Colors.black,
-              ),
-              hintText: "الرياض",
-            ),
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PointSettings(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: Colors.grey)),
+                  child: Row(
+                    children: [
+                      Text(
+                        "الرياض",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+
+                      const Spacer(),
+                      const SizedBox(width: 10),
+                      Image.asset(
+                        'assets/images/Vector (26).png',
+                      ),
+                    ],
+                  ),
+                )),
             SizedBox(height: 120),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 18, vertical: 5),
