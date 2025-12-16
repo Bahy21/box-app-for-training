@@ -17,14 +17,14 @@ class _HomeState extends State<Home> {
       length: 4,
       child: Scaffold(
         body: TabBarView(children: [
-          HomePage(),
+          const HomePage(),
           /// home page
           Container(),
           Container(),
           Container(),
         ]),
         bottomNavigationBar: Padding(
-          padding: EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 10),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

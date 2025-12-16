@@ -11,93 +11,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: CustomOrangeButton(
-          text: "احجز",
-          onTap: () {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(25),
-                ),
-              ),
-              builder: (context) {
-                return Container(
-                  height: 350,
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(24),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 20),
-                        Text(
-                          "حدد نوع الحجز",
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 30),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ViewScreen()),
-                                );
-                              },
-                              child: Icon(
-                                Icons.arrow_back_ios,
-                                size: 24,
-                                color: Colors.black,
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            // مسافة صغيرة بين الأيقونة والنص
-                            Expanded(
-                              child: Text(
-                                "                 وحدات قريبة من موقعي",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                overflow:
-                                TextOverflow.ellipsis, // لو النص طويل
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 50),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(Icons.arrow_back_ios),
-                            Text(
-                              "                    وحدات قريبة من موقعي",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            );
-          },
-        ),
-      ),
       backgroundColor: Colors.white,
+      ///TODO مكان بعض (actions) و (leading) اعكس ال
+     /// TODO ايقونه التوثيق تكون جنب الاسم
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -119,7 +35,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     SvgPicture.asset("assets/images/verification.svg"),
                     const Text(
-                      "أهلاً,Salah Hamedً",
+                     "أهلاً, Salah Hamed",
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey,
@@ -127,6 +43,7 @@ class HomePage extends StatelessWidget {
                       ),
                       textDirection: TextDirection.rtl,
                     ),
+                    ///TODO  تيكست "نقاط 500" مش نفس اللون "نقاط ليها لون "و "500"ليها لون
                     const Text(
                       "نقاطك   500",
                       style: TextStyle(
@@ -154,18 +71,110 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      ///TODO فى ايقون ناقصه جنب التيكست
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: CustomOrangeButton(
+          text: "احجز",
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(25),
+                ),
+              ),
+              builder: (context) {
+                return Container(
+                  height: 350,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(24),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 20),
+                        const Text(
+                          "حدد نوع الحجز",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 30),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const ViewScreen()),
+                                );
+                              },
+                              child: const Icon(
+                                Icons.arrow_back_ios,
+                                size: 24,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            // مسافة صغيرة بين الأيقونة والنص
+                            const Expanded(
+                              child: Text(
+                                "                 وحدات قريبة من موقعي",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                overflow:
+                                TextOverflow.ellipsis, // لو النص طويل
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 50),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(Icons.arrow_back_ios),
+                            Text(
+                              "                    وحدات قريبة من موقعي",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
+      ///ُTODO SingleChildScrollView جوا  padding: استعمل ال
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               const SizedBox(height: 10),
-              CustomTextField(
+              ///TODO radius قلل الارتفاع بتاع التيكست فيلد و قلل البوردر
+              const CustomTextField(
                 prefixIconPath: "assets/images/Vector (7).png",
                 suffixIconPath: "assets/images/Vector (5).png",
                 hintText: "موقعك غير مفعّل",
               ),
               const SizedBox(height: 15),
+              ///TODO !...خخخخخخخخ قولتلك ما تعملش الحركه دى ليه تيكست فيلد يابني
+              /// TODO وحط لينك اى صوره من النت networkImage استعمل
               CustomTextFieldImage(
                 height: 140,
                 width: double.infinity,
@@ -181,6 +190,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
+              ///TODO  start استعمل خليها  crossAxisALignment
+              ///TODO Align شيل ال
               const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -201,6 +212,7 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15)
                 ),
                 height: 200,
+                /// TODO review.md شوف ملف
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -217,7 +229,6 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         SvgPicture.asset("assets/images/door.svg"),
-
                       ],
                     ),
                     const Divider(thickness: 1),
@@ -233,10 +244,10 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 12),
-                        Expanded(
+                        const Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Text(
                                 "الوحدة رقم: 1234",
                                 style: TextStyle(
@@ -279,6 +290,7 @@ class HomePage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        ///TODO border Radius فى ايقونه ناقصه و ظبط
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
@@ -296,6 +308,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
+              ///TODO  start استعمل خليها  crossAxisALignment
+              ///TODO Align شيل ال
               const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -308,6 +322,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
+              ///TODO شيل ال تيكست فيلد دا و اعمل الكونتينر عادى من غيره
               CustomTextFieldImage(
                 height: 170,
                 width: double.infinity,
@@ -334,10 +349,10 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 12),
-                            Expanded(
+                            const Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
                                     "الوحدة رقم: 1234",
                                     style: TextStyle(
@@ -383,11 +398,10 @@ class HomePage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    
                     backgroundColor: Colors.transparent,
                     shadowColor: Colors.transparent,
                     elevation: 0,
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
 
                     side: const BorderSide(
                       color: Colors.grey,
@@ -410,6 +424,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              ///TODO  واحد فيه الارتفاع كله (sized box ) استعمل
               const SizedBox(height: 20),
               const SizedBox(height: 90),
             ],

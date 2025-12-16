@@ -68,7 +68,7 @@ class ScreenName extends StatelessWidget {
               const SizedBox(height: 10),
 
               // حقل الاسم الأول محاذي لليمين
-              CustomTextField(hintText: "My name"),
+              const CustomTextField(hintText: "My name"),
               const SizedBox(height: 30),
               const Align(
                 alignment: Alignment.centerRight,
@@ -80,8 +80,8 @@ class ScreenName extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              CustomTextField(
+              const SizedBox(height: 20),
+              const CustomTextField(
                 hintText: "E-mail",
               ),
               const SizedBox(height: 30),
@@ -95,7 +95,7 @@ class ScreenName extends StatelessWidget {
                   ),
                 ),
               ),
-              CustomTextField(
+              const CustomTextField(
                 suffixIcon: Icon(
                   Icons.keyboard_arrow_down_sharp,
                   size: 20,
@@ -103,10 +103,10 @@ class ScreenName extends StatelessWidget {
                 ),
                 hintText: "City",
               ),
-              SizedBox(
+              const SizedBox(
                 height: 150,
               ),
-              Align(
+              const Align(
                 alignment: Alignment.center,
                 child: Text(
                   "من خلال إنشاء حساب فإنك توافق على الشروط والأحكام و سياسة الخصوصية",
