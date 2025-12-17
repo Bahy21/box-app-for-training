@@ -11,7 +11,7 @@ class BookingCompletedScreen extends StatelessWidget {
     return Scaffold(
       body: ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 25),
-        itemCount: 1,
+        itemCount: 6,
         separatorBuilder: (_, __) => const SizedBox(height: 20),
         itemBuilder: (context, index) {
           return BookingCompletedItem(
