@@ -191,7 +191,7 @@ class ViewWallet extends StatelessWidget {
                               ),
                               const SizedBox(width: 4),
                               Image.asset(
-                                "assets/images/رمز الريال السعودي بدقة عالية  svg – png 1.png",
+                                "assets/images/coin.png",
                                 width: 20,
                                 height: 20,
                               ),
@@ -261,7 +261,7 @@ class ViewWallet extends StatelessWidget {
                               ),
                               const SizedBox(width: 4),
                               Image.asset(
-                                "assets/images/رمز الريال السعودي بدقة عالية  svg – png 1.png",
+                                "assets/images/coin.png",
                                 width: 20,
                                 color: Colors.redAccent,
                                 height: 20,

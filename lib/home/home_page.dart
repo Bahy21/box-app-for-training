@@ -17,64 +17,99 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.notifications_outlined,
-            color: Colors.black,
-            size: 28,
-          ),
-          onPressed: () {},
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SvgPicture.asset("assets/images/verification.svg"),
-                    const Text(
-                     "أهلاً, Salah Hamed",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      textDirection: TextDirection.rtl,
-                    ),
-                    ///TODO  تيكست "نقاط 500" مش نفس اللون "نقاط ليها لون "و "500"ليها لون
-                    const Text(
-                      "نقاطك   500",
-                      style: TextStyle(
-                        fontSize: 8,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textDirection: TextDirection.rtl,
-                    ),
-                  ],
+
+        leadingWidth: 220,
+        leading: Padding(
+          padding: const EdgeInsets.only(right:10),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 24,
+                backgroundColor: Colors.white,
+                child: SvgPicture.asset(
+                  "assets/images/user.svg",
+                  width: 28,
+                  height: 40,
+                  fit: BoxFit.contain,
                 ),
-                const SizedBox(width: 12),
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.white,
-                  child: SvgPicture.asset(
-                    "assets/images/user.svg",
-                    width: 30,
-                    height: 50,
-                    fit: BoxFit.contain,
+              ),
+              const SizedBox(width: 10),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Row(
+                    children: [
+                      const Text(
+                        "أهلاً, Salah Hamed",
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      SizedBox(width: 5,),
+
+                      SvgPicture.asset(
+                        "assets/images/verification.svg",
+                        width: 16,
+                      ),
+
+
+                    ],
                   ),
-                ),
-              ],
-            ),
+                  const Row(
+                    children: [
+                      Text(
+                        "نقاطك",
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        "500",
+                        style: TextStyle(
+                          fontSize: 8,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
+        ),
+
+        // أيقونة الإشعارات
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.notifications_outlined,
+              color: Colors.black,
+              size: 28,
+            ),
+            onPressed: () {},
+          ),
+          const SizedBox(width: 8),
         ],
       ),
       ///TODO فى ايقون ناقصه جنب التيكست
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: CustomOrangeButton(
+        child:CustomOrangeButton(
+          image: Image.asset(
+            "assets/images/calendar 1.png",
+            width: 30,
+            height: 30,
+          ),
           text: "احجز",
           onTap: () {
             showModalBottomSheet(
@@ -95,59 +130,61 @@ class HomePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 20),
+
                         const Text(
                           "حدد نوع الحجز",
                           style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
+
                         const SizedBox(height: 30),
+
+                        /// الصف الأول
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const ViewScreen()),
-                                );
-                              },
-                              child: const Icon(
-                                Icons.arrow_back_ios,
-                                size: 24,
-                                color: Colors.black,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            // مسافة صغيرة بين الأيقونة والنص
                             const Expanded(
                               child: Text(
-                                "                 وحدات قريبة من موقعي",
+                                "وحدات قريبة من موقعي",
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
-                                overflow:
-                                TextOverflow.ellipsis, // لو النص طويل
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
+                            const SizedBox(width: 10),
+                            Image.asset("assets/images/down-arrow.png"),
+
+
                           ],
                         ),
-                        const SizedBox(height: 50),
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+
+                        const SizedBox(height: 30),
+
+                        /// الصف الثاني
+                        Row(
                           children: [
-                            Icon(Icons.arrow_back_ios),
-                            Text(
-                              "                    وحدات قريبة من موقعي",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            const Expanded(
+                              child: Text(
+                                "اختيار وحدة محددة",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
+                            const SizedBox(width: 10),
+                            Image.asset("assets/images/down-arrow.png"),
+
+                          //  const Icon(Icons.arrow_back_ios, size: 20),
+
                           ],
                         ),
-                        const SizedBox(height: 20),
                       ],
                     ),
                   ),
@@ -156,6 +193,7 @@ class HomePage extends StatelessWidget {
             );
           },
         ),
+
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 
@@ -167,28 +205,46 @@ class HomePage extends StatelessWidget {
             children: [
               const SizedBox(height: 10),
               ///TODO radius قلل الارتفاع بتاع التيكست فيلد و قلل البوردر
-              const CustomTextField(
-                prefixIconPath: "assets/images/Vector (7).png",
-                suffixIconPath: "assets/images/Vector (5).png",
-                hintText: "موقعك غير مفعّل",
-              ),
-              const SizedBox(height: 15),
-              ///TODO !...خخخخخخخخ قولتلك ما تعملش الحركه دى ليه تيكست فيلد يابني
-              /// TODO وحط لينك اى صوره من النت networkImage استعمل
-              CustomTextFieldImage(
-                height: 140,
-                width: double.infinity,
-                contentPadding: EdgeInsets.zero,
-                prefixIcon: Container(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 1),
+                child: Container(
+                  width: double.infinity,
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: const DecorationImage(
-                      image: AssetImage("assets/images/Rectangle.png"),
-                      fit: BoxFit.cover,
-                    ),
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: Colors.grey)),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        'assets/images/Vector (5).png',
+                        width: 24,
+                        height: 24,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        "موقعك غير مفعّل",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                       SizedBox(width: 5),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Image.asset(
+                          'assets/images/Vector (7).png',
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
+               SizedBox(height: 15),
+              ///TODO !...خخخخخخخخ قولتلك ما تعملش الحركه دى ليه تيكست فيلد يابني
+              /// TODO وحط لينك اى صوره من النت networkImage استعمل
               const SizedBox(height: 20),
               ///TODO  start استعمل خليها  crossAxisALignment
               ///TODO Align شيل ال
@@ -203,9 +259,11 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+
               const SizedBox(height: 15),
               Container(
                 decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
                   border: Border.all(
                     color: Colors.grey
                   ),
@@ -213,7 +271,7 @@ class HomePage extends StatelessWidget {
                 ),
                 height: 200,
                 /// TODO review.md شوف ملف
-                width: double.infinity,
+               // width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,17 +349,33 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         ///TODO border Radius فى ايقونه ناقصه و ظبط
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            border: Border.all(color: Colors.orange),
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          child: const Text("مغادرة الوحدة"),
-                        ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                "assets/images/log-out.png", // اسم صح بدون مسافات
+                                width: 24,
+                                height: 24,
+                              ),
+                              const SizedBox(width: 8),
+                              const Text(
+                                "إلغاء الحجز",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+
                       ],
                     ),
                   ],
@@ -323,109 +397,90 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               ///TODO شيل ال تيكست فيلد دا و اعمل الكونتينر عادى من غيره
-              CustomTextFieldImage(
-                height: 170,
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                height: 200,
                 width: double.infinity,
-                contentPadding: EdgeInsets.zero,
-                prefixIcon: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Column(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                "assets/images/Rectangle.png",
-                                width: 60,
-                                height: 60,
-                                fit: BoxFit.cover,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            "assets/images/Rectangle.png",
+                            width: 60,
+                            height: 60,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(width: 15),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                "الوحدة رقم: 1234",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            const SizedBox(width: 12),
-                            const Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              SizedBox(height: 9),
+                              Row(
                                 children: [
+                                  Icon(
+                                    Icons.calendar_today,
+                                    size: 14,
+                                    color: Colors.grey,
+                                  ),
+                                  SizedBox(width: 4),
                                   Text(
-                                    "الوحدة رقم: 1234",
+                                    "2024-12-10",
                                     style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  SizedBox(height: 4),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.calendar_today,
-                                        size: 14,
-                                        color: Colors.grey,
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text(
-                                        "2024-12-10",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  )
                                 ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "200 ﷼",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.orange,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    shadowColor: Colors.transparent,
-                    elevation: 0,
-                    padding: const EdgeInsets.all(20),
-
-                    side: const BorderSide(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: const Text(
-                    "إلغاء الحجز",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "200 ﷼",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                            padding: EdgeInsets.symmetric(horizontal: 30,vertical:10),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text("إلغاء الحجز",style: TextStyle(fontWeight: FontWeight.bold),)),
+
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              ///TODO  واحد فيه الارتفاع كله (sized box ) استعمل
-              const SizedBox(height: 20),
+              ),              ///TODO  واحد فيه الارتفاع كله (sized box ) استعمل
               const SizedBox(height: 90),
             ],
           ),

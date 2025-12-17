@@ -52,7 +52,7 @@ class _WalletTwoState extends State<WalletTwo> {
                 suffixIcon: Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: Image.asset(
-                    'assets/images/رمز الريال السعودي بدقة عالية  svg – png 1.png',
+                    'assets/images/coin.png',
                     width: 24,
                     height: 24,
                   ),
