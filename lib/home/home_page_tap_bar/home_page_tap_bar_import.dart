@@ -4,8 +4,8 @@ import 'package:boxapp/settings/view_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../wallet/view_wallet.dart';
 import '../home_page_details/home_page_details_imports.dart';
+import '../home_wallet/home_wallet_import.dart';
 
 
 part 'home_page_tap_bar.dart';
