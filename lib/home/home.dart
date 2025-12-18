@@ -23,7 +23,6 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         body: TabBarView(children: [
           const HomePage(),
-          /// home page
           Reservations(),
           ViewWallet(),
           ViewSettings(),

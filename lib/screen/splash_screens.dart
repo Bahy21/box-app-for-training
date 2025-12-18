@@ -2,6 +2,7 @@ import 'package:boxapp/screen/show_modle_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Screen extends StatefulWidget {
   const Screen({super.key});
@@ -36,10 +37,7 @@ class _ScreenState extends State<Screen> {
                 // العنوان
                 Text(
                   "اختر اللغة المفضلة",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: GoogleFonts.hedvigLettersSans(),
                 ),
 
                 SizedBox(height: 30),
