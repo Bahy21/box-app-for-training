@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'home/home.dart';
+import 'screen/splash_screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -60,7 +61,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  HomeScreen(),
+      // home:  HomeScreen(),
+      home:  const SplashScreen(),
     );
   }
 }
