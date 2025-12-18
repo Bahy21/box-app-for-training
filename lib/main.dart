@@ -1,9 +1,7 @@
-import 'package:boxapp/home/home_page.dart';
 import 'package:boxapp/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'home/home.dart';
 import 'screen/splash_screens.dart';
 
 void main() {
