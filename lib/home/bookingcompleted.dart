@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'booking_completed.dart';
+import 'completed_booking_details/completed_booking_details_imports.dart';
+
 
 class BookingCompleted extends StatelessWidget {
   const BookingCompleted({super.key});
@@ -19,7 +20,7 @@ class BookingCompleted extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const BookingCompletedResv(),
+                  builder: (context) =>  const BookingCompletedResv(),
                 ),
               );
             },
