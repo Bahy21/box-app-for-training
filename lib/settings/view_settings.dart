@@ -13,6 +13,7 @@ class ViewSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //app bar
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: const Center(
