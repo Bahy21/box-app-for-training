@@ -1,8 +1,8 @@
-import 'package:boxapp/home/bookingcompleted.dart';
-import 'package:boxapp/home/home_reservation.dart';
 import 'package:flutter/material.dart';
 
 import 'active_booking/activebooking.dart';
+import 'completed_booking/completed_booking_import.dart';
+import 'home_page_reservation/home_page_reservation_imports.dart';
 
 class Reservations extends StatefulWidget {
   const Reservations({super.key});
