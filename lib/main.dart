@@ -1,9 +1,10 @@
+import 'package:boxapp/home/home_page.dart';
 import 'package:boxapp/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'home/home_page_tap_bar/home_page_tap_bar_import.dart';
-
+import 'home/home.dart';
+import 'screen/splash_screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -59,7 +61,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  Home(),
+      // home:  HomeScreen(),
+      home:  const SplashScreen(),
     );
   }
 }

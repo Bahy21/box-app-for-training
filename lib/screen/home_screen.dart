@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Screen()),
+                  MaterialPageRoute(builder: (context) => const SplashScreen()),
                 );
               },
               child: Image.asset(
