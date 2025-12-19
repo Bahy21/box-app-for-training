@@ -1,11 +1,4 @@
-import 'package:boxapp/settings/about_comfort_box.dart';
-import 'package:boxapp/settings/asked%20questions.dart';
-import 'package:boxapp/settings/point_settings.dart';
-import 'package:boxapp/settings/privacy_policy.dart';
-import 'package:boxapp/settings/profil_settings.dart';
-import 'package:boxapp/settings/terms_conditions.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+part of 'settings_app_imports.dart';
 
 class ViewSettings extends StatelessWidget {
   const ViewSettings({super.key});
@@ -14,15 +7,7 @@ class ViewSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       //app bar
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Center(
-          child: Text(
-            "الاعدادات",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
+      appBar: SettingAppAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -81,206 +66,9 @@ class ViewSettings extends StatelessWidget {
                   );
                 },
                 //points
-                child: Container(
-                  width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: Colors.grey)),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/images/money.png',
-                        width: 24,
-                        height: 24,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        "نقاط ولاء",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-
-                      const Spacer(), // يملأ المساحة الفارغة بين النص واليمين
-                      Text(
-                        "500 نقاط",
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                      const SizedBox(width: 10),
-                      Image.asset(
-                        'assets/images/Vector (22).png',
-                      ),
-                    ],
-                  ),
-                )),
-          // support for
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0, right: 30),
-                  // ممكن تغير القيم حسب احتياجك
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: Text(
-                      "دعم واستعلامات",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => PrivacyPolicy()),
-                    );
-                  },
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: SvgPicture.asset("assets/images/privacy.svg"),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "سياسة الخصوصية",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(width: 175),
-                      Image.asset("assets/images/Vector (22).png"),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TermsConditions()));
-                  },
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: SvgPicture.asset("assets/images/contract.svg"),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "الأحكام والشروط",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(width: 187),
-                      Image.asset("assets/images/Vector (22).png"),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AboutComfortBox()));
-                  },
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: SvgPicture.asset(
-                          "assets/images/Comfort Logo.svg",
-                          width: 30,
-                          height: 30,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "عن كمفورت بوكس",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(width: 175),
-                      Image.asset("assets/images/Vector (22).png"),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AskedQuestions()));
-                  },
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: SvgPicture.asset("assets/images/faq.svg"),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "الأسئلة الشائعة",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(width: 200),
-                      Image.asset("assets/images/Vector (22).png"),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PointSettings()));
-                  },
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child:
-                            SvgPicture.asset("assets/images/customer (1).svg"),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "تواصل معنا",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(width: 223),
-                      Image.asset("assets/images/Vector (22).png"),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+                child: SettingAppPoints()),
+            // support for
+            SettingAppSupportFor(),
             // app settings
             Column(
               children: [
@@ -312,13 +100,13 @@ class ViewSettings extends StatelessWidget {
                     Text(
                       "اللغة",
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(width: 225),
                     Text(
                       "اللغة",
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(width: 10),
                     GestureDetector(
@@ -352,7 +140,7 @@ class ViewSettings extends StatelessWidget {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(right: 20),
+                                          const EdgeInsets.only(right: 20),
                                           child: Image.asset(
                                               "assets/images/Clip path group.png"),
                                         ),
@@ -382,7 +170,7 @@ class ViewSettings extends StatelessWidget {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(right: 20),
+                                          const EdgeInsets.only(right: 20),
                                           child: Image.asset(
                                               "assets/images/united.png"),
                                         ),
@@ -411,13 +199,13 @@ class ViewSettings extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 30),
                       child:
-                          SvgPicture.asset("assets/images/Group 48096074.svg"),
+                      SvgPicture.asset("assets/images/Group 48096074.svg"),
                     ),
                     SizedBox(width: 10),
                     Text(
                       "المظهر",
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(width: 152), // مسافة بسيطة بين النصوص
                     Text(
@@ -445,7 +233,7 @@ class ViewSettings extends StatelessWidget {
                     Text(
                       "المظهر",
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(width: 152), // مسافة بسيطة بين النصوص
                     Text(
@@ -481,7 +269,7 @@ class ViewSettings extends StatelessWidget {
                                       height: 237, // هنا تتحكم في الطول
                                       child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.only(
@@ -500,7 +288,7 @@ class ViewSettings extends StatelessWidget {
                                             const SizedBox(height: 50),
                                             Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 SizedBox(
                                                   height: 30,
