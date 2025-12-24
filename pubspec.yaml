@@ -39,6 +39,15 @@ dependencies:
   animated_splash_screen: ^1.3.0
   flutter_svg: ^2.1.0
   google_fonts: ^6.2.1
+  dio: ^5.9.0
+  retrofit: ^4.5.0
+  json_annotation: ^4.9.0
+  get_it: ^9.2.0
+  flutter_bloc: ^9.1.1
+  freezed_annotation: ^3.1.0
+
+
+
 
 
 dev_dependencies:
@@ -51,6 +60,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+
+  # Code generation tooling
+  build_runner: ^2.5.4
+  retrofit_generator: ^9.3.0
+  json_serializable: ^6.7.1
+  freezed: ^3.1.0
+  # Let dependencies choose a compatible analyzer (do not force 9.x which conflicts with freezed)
+  # analyzer: ^9.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

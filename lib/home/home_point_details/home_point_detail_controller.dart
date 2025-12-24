@@ -1,0 +1,1 @@
+part of 'home_point_details_import.dart';

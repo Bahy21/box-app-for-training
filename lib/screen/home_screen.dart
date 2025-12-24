@@ -1,6 +1,7 @@
-import 'package:boxapp/screen/splash_screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../home/splash_screens/splash_screens_import.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

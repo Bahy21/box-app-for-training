@@ -1,0 +1,18 @@
+targets:
+  $default:
+    sources:
+      - "lib/**"
+      - "pubspec.yaml"
+      - "build.yaml"
+    builders:
+      retrofit_generator:
+        generate_for:
+          - "lib/**"
+      json_serializable:
+        generate_for:
+          - "lib/**"
+      freezed:
+        generate_for:
+          - "lib/**"
+
+
