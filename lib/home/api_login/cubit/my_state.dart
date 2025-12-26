@@ -1,4 +1,5 @@
-part of 'my_cubit.dart';
+import 'package:meta/meta.dart';
+import '../user.dart';
 
 @immutable
 abstract class MyState {}

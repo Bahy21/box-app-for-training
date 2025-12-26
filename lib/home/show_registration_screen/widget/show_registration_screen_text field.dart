@@ -4,13 +4,16 @@ class ShowRegistrationScreenTextFiled extends StatelessWidget {
   const ShowRegistrationScreenTextFiled({
     super.key,
     required this.hintText,
+    this.controller,
   });
 
   final String hintText;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
         hintText: hintText,

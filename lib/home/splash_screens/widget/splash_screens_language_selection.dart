@@ -28,7 +28,15 @@ class SplashScreensLanguageSelection extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ShowModelScreen(),
+                    builder: (context) => BlocProvider(
+                      create: (context) {
+                        final dio = Dio();
+                        final webServices = WebServices(dio);
+                        final myRepo = MyRepo(webServices: webServices);
+                        return MyCubit(myRepo);
+                      },
+                      child:  ShowModelScreen(),
+                    ),
                   ),
                 );
               },
@@ -54,7 +62,15 @@ class SplashScreensLanguageSelection extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ShowModelScreen(),
+                    builder: (context) => BlocProvider(
+                      create: (context) {
+                        final dio = Dio();
+                        final webServices = WebServices(dio);
+                        final myRepo = MyRepo(webServices: webServices);
+                        return MyCubit(myRepo);
+                      },
+                      child:  ShowModelScreen(),
+                    ),
                   ),
                 );
               },

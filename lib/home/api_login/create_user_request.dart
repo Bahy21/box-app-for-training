@@ -21,3 +21,6 @@ class CreateUserRequest {
   Map<String, dynamic> toJson() => _$CreateUserRequestToJson(this);
 }
 
+
+
+

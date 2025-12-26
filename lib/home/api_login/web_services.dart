@@ -10,7 +10,7 @@ abstract class WebServices {
 
   @POST("auth/login")
   Future<User> createNewUser(
-    @Header("Authorization") String token,
-    @Body() Map<String, dynamic> body,
-  );
+      @Header("Authorization") String token,
+      @Body() Map<String, dynamic> body,
+      );
 }

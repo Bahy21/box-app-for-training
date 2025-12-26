@@ -1,5 +1,4 @@
-import 'package:boxapp/home/api_login/create_user_request.dart';
-import 'package:boxapp/home/api_login/user.dart';
+/*import 'package:boxapp/home/api_login/user.dart';
 import 'package:boxapp/home/api_login/web_services.dart';
 
 class MyRepo {
@@ -10,18 +9,41 @@ class MyRepo {
   Future<User> createNewUser({
     required String phone,
     required String password,
-    String? fcmToken,
     String? token,
   }) async {
-    final request = CreateUserRequest(
-      phone: phone,
-      password: password,
-      fcmToken: fcmToken,
-    );
+    final body = {
+      'phone': phone,
+      'password': password,
+    };
 
     return await webServices.createNewUser(
-      token ?? "Bearer 34q1q2w3eo99",
-      request.toJson(),
+      token != null && token.isNotEmpty ? 'Bearer $token' : '',
+      body,
     );
   }
 }
+
+ */
+import 'user.dart';
+import 'web_services.dart';
+import 'package:dio/dio.dart';
+
+class MyRepo {
+  final WebServices webServices;
+
+  MyRepo({required this.webServices});
+
+  Future<User> createNewUser({
+    required String phone,
+    required String password,
+    String token = '446af5a5sfsdfa', // التوكن اللي ادتهالك
+  }) async {
+    final body = {
+      'phone': phone,
+      'password': password,
+    };
+
+    return await webServices.createNewUser(token, body);
+  }
+}
+
