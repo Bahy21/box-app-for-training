@@ -8,7 +8,7 @@ class ApiService {
   ApiService()
       : dio = Dio(
     BaseOptions(
-      baseUrl: "http://comfort-box.test/api/v1/",
+      baseUrl: "https://tan-cat-176794.hostingersite.com/api/v1/",
       headers: {
        "Content-Type": "application/json",
       },
