@@ -1,4 +1,4 @@
-import 'package:boxapp/home/settings_app/widgets/settings_app_w_imports.dart';
+import 'package:box_app/home/settings_app/widgets/settings_app_w_imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

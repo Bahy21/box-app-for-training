@@ -1,6 +1,6 @@
 {
-    "name": "boxapp",
-    "short_name": "boxapp",
+    "name": "box_app",
+    "short_name": "box_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

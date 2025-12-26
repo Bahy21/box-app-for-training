@@ -1,0 +1,47 @@
+class Routes {
+  static const String splashView = '/';
+  static const String selectLanguageView = '/selectLanguageScreen';
+  static const String onBoardingView = '/onBoardingView';
+  static const String loginView = '/loginView';
+  static const String pinCodeView = '/pinCodeView';
+  static const String pinCodeSuccessView = '/pinCodeSuccessView';
+  static const String bottomNavView = '/bottomNavView';
+  static const String settingView = '/settingView';
+  static const String myOrdersView = '/myOrdersView';
+  static const String createAccUserView = '/createAccUserView';
+  static const String createAccTechView = '/createAccTechView';
+  static const String nafathVerificationView = '/nafathVerificationView';
+  static const String walletTechView = '/walletTechView';
+  static const String walletUserView = '/walletUserView';
+  static const String termsAndCondView = '/termsAndCondView';
+  static const String privacyView = '/privacyView';
+  static const String ratingsTechView = '/ratingsTechView';
+  static const String helpCenterView = '/helpCenterView';
+  static const String finishOrderView = '/finishOrderView';
+  static const String serviceDetailsView = '/serviceDetailsView';
+  static const String whoAreWe = '/whoAreWe';
+  static const String rateTechView = '/rateTechView';
+  static const String selectLocationView = '/selectLocationView';
+  static const String subServicesView = '/subServicesView';
+  static const String orderDetailsTechView = '/orderDetailsTechView';
+  static const String orderDetailsUserView = '/orderDetailsUserView';
+  static const String bookingDetailsView = '/bookingDetailsView';
+  static const String activeBookingDetailsView = '/activeBookingDetailsView';
+  static const String completedBookingDetailsView =
+      '/completedBookingDetailsView';
+  static const String techRatesView = '/techRatesView';
+  static const String chatView = '/chatView';
+  static const String photoViewView = '/photoViewView';
+  static const String homeView = '/homeView';
+  static const String homeUnitsResults = '/HomeUnitsResult';
+  static const String unitDetails = '/UnitDetails';
+  static const String unitReviews = '/UnitReviews';
+  static const String loyaltyPointsView = '/loyaltyPointsView';
+  static const String faqView = '/faqView';
+  static const String contactUsView = '/contactUsView';
+  static const String editProfileView = '/editProfileView';
+  static const String rechargeWallet = '/rechargeWallet';
+  static const String bookingStepOne = '/bookingStepOne';
+  static const String bookingPayment = '/bookingPayment';
+  static const String notificationsView = '/notificationsView';
+}
