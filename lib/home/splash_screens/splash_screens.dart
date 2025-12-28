@@ -1,5 +1,4 @@
 part of 'splash_screens_import.dart';
-// import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,24 +8,26 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
-  //didChangeDependencies
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    await Future.delayed(const Duration(milliseconds: 100));
-    print("=================== after await ");
-    showSheet(context);
+  void initState() {
+    super.initState();
+
+    // بعد ما الفريم الأول يترسم
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 100));
+      showSheet(context);
+    });
   }
 
-//showSheet
-
-  void showSheet(BuildContext context){
+  // Bottom Sheet
+  void showSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
+      backgroundColor: Colors.transparent,
       builder: (context) {
-        print("=================== inside build");
         return Container(
-          height: 380,
+          height: MediaQuery.of(context).size.height * 0.45,
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -36,14 +37,10 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           padding: const EdgeInsets.all(20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end, // كل العناصر على اليمين
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              // العنوان
-              //language selection
-
               SplashScreensLanguageSelection(),
               const Spacer(),
-              // button sheet
               SplashScreensButtonSheet(),
             ],
           ),

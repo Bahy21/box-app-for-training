@@ -17,6 +17,7 @@ class _ShowModelScreenState extends State<ShowModelScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: SingleChildScrollView(
@@ -25,23 +26,14 @@ class _ShowModelScreenState extends State<ShowModelScreen> {
                   children: [
                     const SizedBox(height: 60),
                     const ShowRegistrationScreenContinue(),
+
                     const SizedBox(height: 20),
                     ShowRegistrationScreenTextFiled(
-                      hintText: '**********',
-                   //   controller: passwordController,
+                      hintText: ' 05 *** **** ',
                     ),
                     const SizedBox(height: 150),
 
-                    CustomOrangeButton(
-                      text: "تسجيل الدخول",
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => const NextPage()),
-                        );
-                      },
-                    ),
-
+                    ShowRegistrationScreenButton(),
                     const SizedBox(height: 10),
                   ],
                 ),
