@@ -8,12 +8,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
 
-    // بعد ما الفريم الأول يترسم
+    // بعد تحميل الشاشة، نعرض الـBottom Sheet تلقائيًا
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 100));
       showSheet(context);
@@ -24,10 +23,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void showSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.transparent,
       builder: (context) {
         return Container(
-          height: MediaQuery.of(context).size.height * 0.45,
+          height: 380,
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -39,8 +37,10 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              // Language selection
               SplashScreensLanguageSelection(),
               const Spacer(),
+              // Button sheet
               SplashScreensButtonSheet(),
             ],
           ),
@@ -53,12 +53,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffFE9c2D),
-      body: GestureDetector(
-        onTap: () => showSheet(context),
-        child: Center(
-          child: Image.asset(
-            "assets/images/loeg.png",
-          ),
+      body: Center(
+        child: Image.asset(
+          "assets/images/loeg.png",
         ),
       ),
     );
