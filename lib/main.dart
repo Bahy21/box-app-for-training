@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home/contact_us/contact_us_import.dart';
 import 'home/home_page_details/home_page_details_imports.dart';
 import 'home/home_page_tap_bar/home_page_tap_bar_import.dart';
+import 'home/submit_review/submit_review_import.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,8 +54,11 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: Home(),
+      home:HomeSplashScreen(),
+         // home: Home(),
         //  home: ContactUs(),
+       //   home: SubmitReview(),
+
 
         );
       },

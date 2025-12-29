@@ -56,20 +56,33 @@ class CompletedBookingSummary extends StatelessWidget {
         const SizedBox(height: 30),
         Row(
           children: [
-            Container(
-              height: 50,
-              width: 350,
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(20),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SubmitReview(), // غير NextPage() بالصفحة المطلوبة
+                  ),
+                );
+              },
+              child: Container(
+                height: 50,
+                width: 350,
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  border: Border.all(color: Colors.orange),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                alignment: Alignment.center,
+                child: const Text(
+                  "إعادة جدولة الحجز",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              alignment: Alignment.center,
-              child: const Text(
-                "مغادرة الوحدة",
-                style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
+            )
           ],
         ),
       ],

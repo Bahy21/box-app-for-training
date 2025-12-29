@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../submit_review/submit_review_import.dart';
+
 part 'completed_booking_details_app_bar.dart';
 part 'unit_info_widgets.dart';
 part 'completed_booking_date_time.dart';

@@ -16,7 +16,7 @@ class ContactUsButton extends StatelessWidget {
         ),
         child: const Center(
           child: Text(
-            "إرسال",
+            "ارسال",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

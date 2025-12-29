@@ -231,7 +231,7 @@ class SplashScreensButtonSheet extends StatelessWidget {
           ),
           child: const Center(
             child: Text(
-              "تسجيل الدخول",
+              "متابعه",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -244,5 +244,3 @@ class SplashScreensButtonSheet extends StatelessWidget {
     );
   }
 }
-
-
