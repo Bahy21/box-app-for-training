@@ -206,7 +206,6 @@ class _SplashScreensLanguageSelectionState
   }
 }
 
-// --------- زرار أسفل الـSheet --------- //
 class SplashScreensButtonSheet extends StatelessWidget {
   const SplashScreensButtonSheet({super.key});
 

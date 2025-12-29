@@ -141,7 +141,7 @@ class SettingAppSupportFor extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PointSettings()));
+                    builder: (context) => ContactUs()));
           },
           child: Row(
             children: [

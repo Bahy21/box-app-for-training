@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'home/contact_us/contact_us_import.dart';
+import 'home/home_page_details/home_page_details_imports.dart';
 import 'home/home_page_tap_bar/home_page_tap_bar_import.dart';
 
 void main() {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812), // 👈 مقاس التصميم
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -51,7 +53,9 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: HomeSplashScreen(),
+          home: Home(),
+        //  home: ContactUs(),
+
         );
       },
     );

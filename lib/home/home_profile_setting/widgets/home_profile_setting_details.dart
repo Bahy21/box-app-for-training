@@ -59,16 +59,7 @@ class HomeProfileSettingDetails extends StatelessWidget {
           ),
         ),
         SizedBox(height: 10),
-        GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PointSettings(),
-                ),
-              );
-            },
-            child: Container(
+           Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
@@ -92,7 +83,7 @@ class HomeProfileSettingDetails extends StatelessWidget {
                   ),
                 ],
               ),
-            )),
+            ),
         SizedBox(height: 120),
       ],
     );
