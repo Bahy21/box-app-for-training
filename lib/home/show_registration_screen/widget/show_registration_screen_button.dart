@@ -16,11 +16,11 @@ class ShowRegistrationScreenButton extends StatelessWidget {
       builder: (context, state) {
         final bool isLoading =
             state is LoginTechLoading || state is LoginUserLoading;
-
+        final cubit = BlocProvider.of<LoginCubit>(context);
         return AbsorbPointer(
           absorbing: isLoading,
           child: GestureDetector(
-            onTap: isLoading ? null : onTap,
+            onTap: isLoading ? null :()=>  cubit.login(context: context),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Container(

@@ -1,3 +1,6 @@
+import 'package:box_app/api_constants/auth_repository/auth_repository.dart';
+import 'package:box_app/api_constants/date/pin_code_argument.dart';
+import 'package:box_app/api_constants/login.dart';
 import 'package:box_app/core/framework/app_firebase.dart';
 import 'package:box_app/core/framework/device_info.dart';
 import 'package:box_app/core/helpers/custom_phone_controller.dart';
@@ -8,9 +11,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 
-import '../auth_repository/auth_repository.dart';
-import '../date/pin_code_argument.dart';
-import '../login.dart';
 
 part 'login_state.dart';
 
@@ -37,26 +37,14 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void login({required BuildContext context}) async {
-    // Validate phone number before calling API
-    final isValid  = phoneCtrl.validatePhoneField();
-    if (!isValid) {
-      // Validation failed - error message is already set in phoneCtrl
-      if (phoneCtrl.errorMessage.isNotEmpty) {
-        showToast(
-          text: phoneCtrl.errorMessage,
-          state: ToastStates.error,
-        );
-      }
-      return;
-    }
+
 
     emit(LoginUserLoading());
-    await getToken();
-    if (fcmToken != null) {
+    // await getToken();
       var result = await repository.loginAndResendCode(
         param: LoginParameter(
           phone: phoneCtrl.controller.text,
-          fcmToken: fcmToken!,
+          fcmToken: fcmToken??"fire",
         ),
       );
 
@@ -73,14 +61,12 @@ class LoginCubit extends Cubit<LoginState> {
               isUser: true,
               phone: phoneCtrl.controller.text,
               deviceId: deviceInfo.id,
-              tokenFirebase: fcmToken!,
+              tokenFirebase: fcmToken??"",
             ),
           );
         },
       );
-    } else {
-      emit(LoginFailure());
-    }
+
   }
 
   @override

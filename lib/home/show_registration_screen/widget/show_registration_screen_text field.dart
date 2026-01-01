@@ -23,7 +23,7 @@ class _ShowRegistrationScreenTextFiledState
   @override
   void initState() {
     super.initState();
-    controller = widget.controller ?? TextEditingController();
+    controller = widget.controller!;
     controller.addListener(() {
       setState(() {
         isError = controller.text.length > 11;
@@ -47,6 +47,7 @@ class _ShowRegistrationScreenTextFiledState
           style: TextStyle(fontSize: 16.sp),
           keyboardType: TextInputType.number,
           textAlign: TextAlign.right,
+
           textDirection: TextDirection.rtl,
           decoration: InputDecoration(
             hintText: widget.hintText,
@@ -71,7 +72,6 @@ class _ShowRegistrationScreenTextFiledState
               ),
             ),
             suffixIcon: SizedBox(
-              width: 95.w,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 6.w),
                 child: Row(

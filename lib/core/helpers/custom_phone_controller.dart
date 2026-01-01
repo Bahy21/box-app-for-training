@@ -19,7 +19,7 @@ class PhoneFieldController extends ChangeNotifier {
       phoneFieldBorder = PhoneFieldBorder.error;
       notifyListeners();
     } else if (!isSaudiNumber) {
-      errorMessage = LocaleKeys.validatePhone.tr();
+      errorMessage = "من  فضلك تأكد من رقم الهاتف";
       phoneFieldBorder = PhoneFieldBorder.error;
       notifyListeners();
     } else {

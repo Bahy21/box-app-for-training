@@ -1,14 +1,13 @@
+import 'package:box_app/core/di/di.dart';
+import 'package:box_app/core/util/routing/app_router.dart';
 import 'package:box_app/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'home/contact_us/contact_us_import.dart';
-import 'home/home_page_details/home_page_details_imports.dart';
-import 'home/home_page_tap_bar/home_page_tap_bar_import.dart';
-import 'home/submit_review/submit_review_import.dart';
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   runApp(const MyApp());
 }
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   static GlobalKey<NavigatorState> appNavigatorKey =
-  GlobalKey<NavigatorState>();
+      GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
+        final appRouter = AppRouter();
         return MaterialApp(
+          navigatorKey: MyApp.appNavigatorKey,
           locale: const Locale('ar'),
           supportedLocales: const [
             Locale('ar'),
@@ -39,8 +40,7 @@ class MyApp extends StatelessWidget {
           localeResolutionCallback: (locale, supportedLocales) {
             if (locale != null) {
               for (var supportedLocale in supportedLocales) {
-                if (supportedLocale.languageCode ==
-                    locale.languageCode) {
+                if (supportedLocale.languageCode == locale.languageCode) {
                   return supportedLocale;
                 }
               }
@@ -50,16 +50,14 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
-            colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-             home:HomeSplashScreen(),
-         // home: Home(),
-        //  home: ContactUs(),
-       //   home: SubmitReview(),
-
-
+          home: HomeSplashScreen(),
+          onGenerateRoute: appRouter.generateRoute,
+          // home: Home(),
+          //  home: ContactUs(),
+          //   home: SubmitReview(),
         );
       },
     );

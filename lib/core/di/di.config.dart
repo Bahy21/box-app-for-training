@@ -17,7 +17,6 @@ import 'package:box_app/api_constants/date/auth_remote_data_source.dart'
     as _i1023;
 import 'package:box_app/api_constants/date/auth_remote_data_sourceImpl.dart'
     as _i1045;
-import 'package:box_app/api_constants/login_cubit/login_cubit.dart' as _i265;
 import 'package:box_app/core/api/api_consumer.dart' as _i550;
 import 'package:box_app/core/api/dio_consumer.dart' as _i577;
 import 'package:box_app/core/api/dio_log_interceptor.dart' as _i342;
@@ -31,6 +30,8 @@ import 'package:box_app/core/helpers/image_helper.dart' as _i596;
 import 'package:box_app/core/helpers/psermission_services.dart' as _i82;
 import 'package:box_app/core/local/shared_preferences/shared_pref_services.dart'
     as _i825;
+import 'package:box_app/home/login_page/cubit/login_cubit/login_cubit.dart'
+    as _i222;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:image_picker/image_picker.dart' as _i183;
@@ -59,8 +60,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => injectionModule.internetConnection);
     gh.factory<_i361.Dio>(() => injectionModule.dioClient);
     gh.factory<_i183.ImagePicker>(() => injectionModule.imagePicker);
-    gh.factory<_i231.AppNotifications>(() => _i231.AppNotifications());
     gh.factory<_i227.DeviceInfo>(() => _i227.DeviceInfo());
+    gh.factory<_i231.AppNotifications>(() => _i231.AppNotifications());
     gh.factory<_i596.DocumentHelper>(() => _i596.DocumentHelper());
     gh.factory<_i82.PermissionServices>(() => _i82.PermissionServices());
     gh.lazySingleton<_i342.DioLogInterceptor>(() => _i342.DioLogInterceptor());
@@ -81,7 +82,7 @@ extension GetItInjectableX on _i174.GetIt {
         _i1045.AuthRemoteDataSourceImpl(apiConsumer: gh<_i550.ApiConsumer>()));
     gh.factory<_i282.AuthRepository>(() => _i1009.AuthRepositoryImpl(
         authRemoteDataSource: gh<_i1023.AuthRemoteDataSource>()));
-    gh.factory<_i265.LoginCubit>(() => _i265.LoginCubit(
+    gh.factory<_i222.LoginCubit>(() => _i222.LoginCubit(
           gh<_i282.AuthRepository>(),
           gh<_i861.AppFirebase>(),
           gh<_i227.DeviceInfo>(),
