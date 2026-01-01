@@ -9,6 +9,15 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:box_app/api_constants/auth_repository/auth_repository.dart'
+    as _i282;
+import 'package:box_app/api_constants/auth_repository/auth_repositoryImpl.dart'
+    as _i1009;
+import 'package:box_app/api_constants/date/auth_remote_data_source.dart'
+    as _i1023;
+import 'package:box_app/api_constants/date/auth_remote_data_sourceImpl.dart'
+    as _i1045;
+import 'package:box_app/api_constants/login_cubit/login_cubit.dart' as _i265;
 import 'package:box_app/core/api/api_consumer.dart' as _i550;
 import 'package:box_app/core/api/dio_consumer.dart' as _i577;
 import 'package:box_app/core/api/dio_log_interceptor.dart' as _i342;
@@ -50,8 +59,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => injectionModule.internetConnection);
     gh.factory<_i361.Dio>(() => injectionModule.dioClient);
     gh.factory<_i183.ImagePicker>(() => injectionModule.imagePicker);
-    gh.factory<_i227.DeviceInfo>(() => _i227.DeviceInfo());
     gh.factory<_i231.AppNotifications>(() => _i231.AppNotifications());
+    gh.factory<_i227.DeviceInfo>(() => _i227.DeviceInfo());
     gh.factory<_i596.DocumentHelper>(() => _i596.DocumentHelper());
     gh.factory<_i82.PermissionServices>(() => _i82.PermissionServices());
     gh.lazySingleton<_i342.DioLogInterceptor>(() => _i342.DioLogInterceptor());
@@ -67,6 +76,15 @@ extension GetItInjectableX on _i174.GetIt {
           networkInfo: gh<_i235.NetworkInfo>(),
           dioClient: gh<_i361.Dio>(),
           appPref: gh<_i825.SharedPrefServices>(),
+        ));
+    gh.factory<_i1023.AuthRemoteDataSource>(() =>
+        _i1045.AuthRemoteDataSourceImpl(apiConsumer: gh<_i550.ApiConsumer>()));
+    gh.factory<_i282.AuthRepository>(() => _i1009.AuthRepositoryImpl(
+        authRemoteDataSource: gh<_i1023.AuthRemoteDataSource>()));
+    gh.factory<_i265.LoginCubit>(() => _i265.LoginCubit(
+          gh<_i282.AuthRepository>(),
+          gh<_i861.AppFirebase>(),
+          gh<_i227.DeviceInfo>(),
         ));
     return this;
   }

@@ -70,6 +70,11 @@ dependencies:
   moyasar: any
   fluttertoast: ^8.2.8
   meta: ^1.13.1
+  flutter_card_swiper: ^7.2.0
+  smooth_page_indicator: ^2.0.1
+  card_swiper: ^3.0.1
+  dartz: ^0.10.1
+
 
 
 

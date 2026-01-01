@@ -4,10 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../custem_text_filed.dart';
-import '../../../model_buttom.dart';
-import '../../send_otp_page/send_otp_page.dart';
-import '../../send_otp_page/send_otp_page_import.dart';
+import '../../../api_constants/login_cubit/login_cubit.dart';
 
 part 'show_registration_screen_continue.dart';
 part 'show_registration_screen_text field.dart';

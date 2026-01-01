@@ -5,5 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 
+
 part 'home_page_details.dart';
 part 'home_page_details_controller.dart';

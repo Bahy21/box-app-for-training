@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
+
               const SizedBox(height: 10),
               ///TODO radius قلل الارتفاع بتاع التيكست فيلد و قلل البوردر
               Padding(
@@ -37,7 +38,9 @@ class HomePage extends StatelessWidget {
                   child: HomePageDetailsWidgetsLocation(),
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 20),
+              ContinuousTwoImageSwiper(),
+
               ///TODO !...خخخخخخخخ قولتلك ما تعملش الحركه دى ليه تيكست فيلد يابني
               /// TODO وحط لينك اى صوره من النت networkImage استعمل
               ///

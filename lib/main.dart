@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-      home:HomeSplashScreen(),
+             home:HomeSplashScreen(),
          // home: Home(),
         //  home: ContactUs(),
        //   home: SubmitReview(),
