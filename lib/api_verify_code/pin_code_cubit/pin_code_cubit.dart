@@ -15,8 +15,8 @@ import 'package:injectable/injectable.dart';
 
 import '../../api_constants/auth_repository/auth_repository.dart';
 import '../../api_constants/auth_repository/token_and_first_login_model.dart';
-import '../lang_param.dart';
-import '../setting_repository.dart';
+import '../parms/lang_param.dart';
+import '../repository/setting_repository.dart';
 import '../user_model.dart';
 
 

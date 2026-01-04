@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../api_verify_code/active_acc_param.dart';
 import '../../api_verify_code/pin_code_cubit/pin_code_cubit.dart';
 import '../../core/di/di.dart';
+import '../login_page/login_page_import.dart'; // الشاشة اللي هتروح لها بعد النجاح
 
 class NextPage extends StatefulWidget {
-  final String phone; // رقم المستخدم يتم تمريره للشاشة
+  final String phone; // رقم المستخدم
   const NextPage({super.key, required this.phone});
 
   @override
@@ -40,8 +41,8 @@ class _NextPageState extends State<NextPage> {
   String get otp =>
       "${_controller1.text}${_controller2.text}${_controller3.text}${_controller4.text}";
 
-  Widget _otpBox(
-      TextEditingController ctrl, FocusNode currentFocus, FocusNode? nextFocus, double size) {
+  Widget _otpBox(TextEditingController ctrl, FocusNode currentFocus,
+      FocusNode? nextFocus, double size) {
     return SizedBox(
       width: size,
       height: size,
@@ -70,6 +71,57 @@ class _NextPageState extends State<NextPage> {
     );
   }
 
+  void _showSuccessDialog() {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Center(
+            child: Text(
+              "تم التحقق من رقم الجوال بنجاح",
+              style: TextStyle(
+                  fontSize: width * 0.05, fontWeight: FontWeight.bold),
+            ),
+          ),
+          content: Center(
+            child: Image.asset("assets/images/Frame.png", height: height * 0.2),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 7.0),
+              child: SizedBox(
+                width: width,
+                height: height * 0.07,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => ScreenName())); // الشاشة بعد النجاح
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  child: Text(
+                    "تم",
+                    style: TextStyle(
+                        fontSize: width * 0.05,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -84,9 +136,7 @@ class _NextPageState extends State<NextPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.arrow_forward),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: () => Navigator.pop(context),
             ),
           ],
         ),
@@ -100,7 +150,8 @@ class _NextPageState extends State<NextPage> {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "التحقق من رقم الجوال!",
-                  style: TextStyle(fontSize: width * 0.06, fontWeight: FontWeight.bold),
+                  style:
+                  TextStyle(fontSize: width * 0.06, fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(height: height * 0.01),
@@ -115,7 +166,7 @@ class _NextPageState extends State<NextPage> {
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  widget.phone, // الرقم هنا ديناميكي
+                  widget.phone,
                   style: TextStyle(fontSize: width * 0.05),
                 ),
               ),
@@ -143,7 +194,12 @@ class _NextPageState extends State<NextPage> {
               const Spacer(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 7.0),
-                child: BlocBuilder<PinCodeCubit, PinCodeState>(
+                child: BlocConsumer<PinCodeCubit, PinCodeState>(
+                  listener: (context, state) {
+                    if (state is PinCodeSuccess) {
+                      _showSuccessDialog();
+                    }
+                  },
                   builder: (context, state) {
                     final cubit = context.read<PinCodeCubit>();
                     final isLoading = state is PinCodeLoading || state is ResendCodeLoading;
@@ -159,8 +215,8 @@ class _NextPageState extends State<NextPage> {
                             context: context,
                             isUser: true,
                             param: ActiveAccParameter(
-                              code: otp, // الكود من مربعات OTP
-                              phone: widget.phone, // الرقم من الشاشة
+                              code: otp,
+                              phone: widget.phone,
                             ),
                           );
                         },

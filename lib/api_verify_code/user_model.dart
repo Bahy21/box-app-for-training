@@ -7,7 +7,7 @@ class UserModel {
   final int? id;
   final String name;
   final String phone;
-  final String avatar;
+  final String? avatar;
   final String? email;
   final String? lat;
   final String? long;

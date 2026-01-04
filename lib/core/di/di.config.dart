@@ -13,15 +13,30 @@ import 'package:box_app/api_constants/auth_repository/auth_repository.dart'
     as _i282;
 import 'package:box_app/api_constants/auth_repository/auth_repository_Impl.dart'
     as _i877;
+import 'package:box_app/api_verify_code/date/auth_remote_data_source.dart'
+    as _i690;
+import 'package:box_app/api_verify_code/date/auth_remote_data_sourceImpl.dart'
+    as _i258;
 import 'package:box_app/api_verify_code/local/auth_local_data_source.dart'
     as _i145;
 import 'package:box_app/api_verify_code/local/auth_local_data_source_Impl.dart'
     as _i27;
+import 'package:box_app/api_verify_code/local/setting_local_data_source.dart'
+    as _i649;
+import 'package:box_app/api_verify_code/local/setting_local_data_source_impl.dart'
+    as _i1008;
 import 'package:box_app/api_verify_code/pin_code_cubit/pin_code_cubit.dart'
     as _i232;
 import 'package:box_app/api_verify_code/pin_code_cubit/user_cubit.dart'
     as _i224;
-import 'package:box_app/api_verify_code/setting_repository.dart' as _i756;
+import 'package:box_app/api_verify_code/remote/setting_remote_data_source.dart'
+    as _i772;
+import 'package:box_app/api_verify_code/remote/setting_remote_data_source_impl.dart'
+    as _i940;
+import 'package:box_app/api_verify_code/repository/setting_repository.dart'
+    as _i894;
+import 'package:box_app/api_verify_code/repository/setting_repository_impl.dart'
+    as _i977;
 import 'package:box_app/core/api/api_consumer.dart' as _i550;
 import 'package:box_app/core/api/dio_consumer.dart' as _i577;
 import 'package:box_app/core/api/dio_log_interceptor.dart' as _i342;
@@ -44,9 +59,6 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
     as _i161;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
-
-import '../../api_verify_code/date/auth_remote_data_source.dart' as _i1023;
-import '../../api_verify_code/date/auth_remote_data_sourceImpl.dart' as _i1045;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -79,6 +91,9 @@ extension GetItInjectableX on _i174.GetIt {
         _i861.AppFirebase(appNotifications: gh<_i231.AppNotifications>()));
     gh.factory<_i235.NetworkInfo>(() => _i235.NetworkInfoImpl(
         internetConnection: gh<_i161.InternetConnection>()));
+    gh.factory<_i649.SettingLocalDataSource>(() =>
+        _i1008.SettingLocalDataSourceImpl(
+            appPref: gh<_i825.SharedPrefServices>()));
     gh.lazySingleton<_i21.ThemeCubit>(
         () => _i21.ThemeCubit(gh<_i825.SharedPrefServices>()));
     gh.lazySingleton<_i224.UserCubit>(
@@ -88,23 +103,30 @@ extension GetItInjectableX on _i174.GetIt {
           dioClient: gh<_i361.Dio>(),
           appPref: gh<_i825.SharedPrefServices>(),
         ));
-    gh.factory<_i1023.AuthRemoteDataSource>(() =>
-        _i1045.AuthRemoteDataSourceImpl(apiConsumer: gh<_i550.ApiConsumer>()));
+    gh.factory<_i772.SettingRemoteDataSource>(() =>
+        _i940.SettingRemoteDataSourceImpl(
+            apiConsumer: gh<_i550.ApiConsumer>()));
     gh.factory<_i145.AuthLocalDataSource>(() =>
         _i27.AuthLocalDataSourceImpl(appPref: gh<_i825.SharedPrefServices>()));
-    gh.factory<_i282.AuthRepository>(() => _i877.AuthRepositoryImpl(
-          authRemoteDataSource: gh<_i1023.AuthRemoteDataSource>(),
-          authLocalDataSource: gh<_i145.AuthLocalDataSource>(),
+    gh.factory<_i894.SettingRepository>(() => _i977.SettingRepositoryImpl(
+          settingRemoteDataSource: gh<_i772.SettingRemoteDataSource>(),
+          settingLocalDataSource: gh<_i649.SettingLocalDataSource>(),
         ));
-    gh.factory<_i232.PinCodeCubit>(() => _i232.PinCodeCubit(
-          gh<_i282.AuthRepository>(),
-          gh<_i756.SettingRepository>(),
-          gh<_i224.UserCubit>(),
+    gh.factory<_i690.AuthRemoteDataSource>(() =>
+        _i258.AuthRemoteDataSourceImpl(apiConsumer: gh<_i550.ApiConsumer>()));
+    gh.factory<_i282.AuthRepository>(() => _i877.AuthRepositoryImpl(
+          authRemoteDataSource: gh<_i690.AuthRemoteDataSource>(),
+          authLocalDataSource: gh<_i145.AuthLocalDataSource>(),
         ));
     gh.factory<_i222.LoginCubit>(() => _i222.LoginCubit(
           gh<_i282.AuthRepository>(),
           gh<_i861.AppFirebase>(),
           gh<_i227.DeviceInfo>(),
+        ));
+    gh.factory<_i232.PinCodeCubit>(() => _i232.PinCodeCubit(
+          gh<_i282.AuthRepository>(),
+          gh<_i894.SettingRepository>(),
+          gh<_i224.UserCubit>(),
         ));
     return this;
   }
