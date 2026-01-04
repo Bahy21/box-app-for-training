@@ -1,5 +1,4 @@
 import 'package:box_app/api_constants/auth_repository/auth_repository.dart';
-import 'package:box_app/api_constants/date/pin_code_argument.dart';
 import 'package:box_app/api_constants/login.dart';
 import 'package:box_app/core/framework/app_firebase.dart';
 import 'package:box_app/core/framework/device_info.dart';
@@ -10,6 +9,8 @@ import 'package:box_app/core/widgets/custom_toast.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../api_verify_code/date/pin_code_argument.dart';
 
 
 part 'login_state.dart';
@@ -37,8 +38,6 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void login({required BuildContext context}) async {
-
-
     emit(LoginUserLoading());
     // await getToken();
       var result = await repository.loginAndResendCode(
