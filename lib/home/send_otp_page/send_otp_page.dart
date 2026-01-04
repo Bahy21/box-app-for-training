@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../api_constants/auth_repository/auth_repository_Impl.dart';
 import '../../api_verify_code/active_acc_param.dart';
-import '../../api_verify_code/date/auth_remote_data_sourceImpl.dart';
-import '../../api_verify_code/local/auth_local_data_source.dart';
 import '../../api_verify_code/pin_code_cubit/pin_code_cubit.dart';
-import '../../api_verify_code/setting_repository.dart';
-import '../../core/api/api_consumer.dart';
-import '../login_page/login_page_import.dart';
+import '../../core/di/di.dart';
 
 class NextPage extends StatefulWidget {
   final String phone; // رقم المستخدم يتم تمريره للشاشة
@@ -82,16 +77,7 @@ class _NextPageState extends State<NextPage> {
     final otpSize = width * 0.18;
 
     return BlocProvider(
-      create: (context) => PinCodeCubit(
-        AuthRepositoryImpl(
-          authRemoteDataSource: AuthRemoteDataSourceImpl(apiConsumer: ApiConsumer()),
-          authLocalDataSource: AuthLocalDataSource(),
-        ),
-        SettingRepository(),
-            (token, context) {
-          Navigator.pushNamed(context, Routes.homeView);
-        },
-      ),
+      create: (context) => getIt<PinCodeCubit>(),
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
