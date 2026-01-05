@@ -77,51 +77,69 @@ class _NextPageState extends State<NextPage> {
 
     showDialog(
       context: context,
+      useRootNavigator: false,
+      barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Center(
-            child: Text(
-              "تم التحقق من رقم الجوال بنجاح",
-              style: TextStyle(
-                  fontSize: width * 0.05, fontWeight: FontWeight.bold),
-            ),
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-          content: Center(
-            child: Image.asset("assets/images/Frame.png", height: height * 0.2),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 7.0),
-              child: SizedBox(
-                width: width,
-                height: height * 0.07,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => ScreenName())); // الشاشة بعد النجاح
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+          child: SizedBox(
+            width: width * 0.3,   // 👈 30% من عرض الشاشة
+            height: height * 0.4, // 👈 30% من ارتفاع الشاشة
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "تم التحقق من رقم الجوال بنجاح",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: width * 0.04,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  child: Text(
-                    "تم",
-                    style: TextStyle(
-                        fontSize: width * 0.05,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+
+                  Image.asset(
+                    "assets/images/Frame.png",
+                    height: height * 0.12,
+                    fit: BoxFit.contain,
                   ),
-                ),
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: height * 0.05,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(); // اقفل الدايلوج
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => ScreenName()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: const Text(
+                        "تم",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         );
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;

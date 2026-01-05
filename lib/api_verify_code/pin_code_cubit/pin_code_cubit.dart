@@ -19,7 +19,6 @@ import '../parms/lang_param.dart';
 import '../repository/setting_repository.dart';
 import '../user_model.dart';
 
-
 part 'pin_code_state.dart';
 
 @injectable
@@ -99,13 +98,19 @@ class PinCodeCubit extends Cubit<PinCodeState> {
       param: LangParam(lang: context.locale.languageCode),
       token: token,
     );
-    result.fold((failure) {
-      showToast(text: failure.message, state: ToastStates.error);
-      emit(ChangeLangFailure());
-    }, (msg) => saveDataUser(context: context, token: token, user: user));
+    result.fold(
+          (failure) {
+        showToast(text: failure.message, state: ToastStates.error);
+        emit(ChangeLangFailure());
+      },
+          (msg) => saveDataUser(context: context, token: token, user: user),
+    );
   }
 
-  void userAuth({required String token, required BuildContext context}) async {
+  void userAuth({
+    required String token,
+    required BuildContext context,
+  }) async {
     emit(PinCodeLoading());
     var result = await repository.authUser(token: token);
     result.fold(
@@ -125,12 +130,8 @@ class PinCodeCubit extends Cubit<PinCodeState> {
     required String token,
     required BuildContext context,
   }) async {
-    emit(PinCodeLoading());
-
-    // Save to UserCubit (which also saves to SharedPreferences) - await to ensure it's saved
     await userCubit.setUser(user: user, token: token);
 
-    // Also save via repository for backward compatibility
     var result = repository.saveUserData(user: user, token: token);
     result.fold(
           (failure) {

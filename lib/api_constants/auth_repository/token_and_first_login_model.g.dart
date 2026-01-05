@@ -11,10 +11,16 @@ TokenAndFirstLoginModel<T> _$TokenAndFirstLoginModelFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     TokenAndFirstLoginModel<T>(
-      message: fromJsonT(json['message']),
+      message: _$nullableGenericFromJson(json['message'], fromJsonT),
       token: json['token'] as String,
       firstLogin: json['first_login'] as bool,
       user: json['user'] == null
           ? null
           : UserModel.fromJson(json['user'] as Map<String, dynamic>),
     );
+
+T? _$nullableGenericFromJson<T>(
+  Object? input,
+  T Function(Object? json) fromJson,
+) =>
+    input == null ? null : fromJson(input);

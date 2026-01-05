@@ -5,26 +5,23 @@ class ScreenName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //app bar
-      appBar: LoginPageAppBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // عنوان كبير
-
-              LoginPageTextTitle(),
-              const SizedBox(height: 30),
-              //login page
-              LoginPageScreen(),
-
-              // تسمية الحقل
-              //showModalBottomSheet
-              LoginPageShowBottomsheet(),
-            ],
+    return BlocProvider<CreateAccUserCubit>(
+      create: (_) => getIt<CreateAccUserCubit>(),
+      child: const Scaffold(
+        appBar: LoginPageAppBar(),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                LoginPageTextTitle(),
+                SizedBox(height: 30),
+                LoginPageScreen(),
+                SizedBox(height: 20),
+                LoginPageShowBottomsheet(), // الزر
+              ],
+            ),
           ),
         ),
       ),

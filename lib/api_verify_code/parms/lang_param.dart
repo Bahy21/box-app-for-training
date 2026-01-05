@@ -8,5 +8,7 @@ class LangParam {
 
   LangParam({required this.lang});
 
-  Map<String, dynamic> toJson() => _$LangParamToJson(this);
+  Map<String, dynamic> toJson() => {
+    "lang":lang,
+  };
 }

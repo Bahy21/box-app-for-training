@@ -10,11 +10,11 @@ class TokenAndFirstLoginModel<T> {
   final String token;
   @JsonKey(name: 'first_login')
   final bool firstLogin;
-  final T message;
+  final T? message;
   final UserModel? user;
 
   TokenAndFirstLoginModel({
-    required this.message,
+     this.message,
     required this.token,
     required this.firstLogin,
     this.user,

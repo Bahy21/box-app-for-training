@@ -13,6 +13,15 @@ import 'package:box_app/api_constants/auth_repository/auth_repository.dart'
     as _i282;
 import 'package:box_app/api_constants/auth_repository/auth_repository_Impl.dart'
     as _i877;
+import 'package:box_app/api_register/cubit/create_acc_user_cubit.dart' as _i372;
+import 'package:box_app/api_register/remote/create_acc_user_remote_data_source.dart'
+    as _i843;
+import 'package:box_app/api_register/remote/create_acc_user_remote_data_source_impl.dart'
+    as _i1049;
+import 'package:box_app/api_register/repository/create_acc_user_repository.dart'
+    as _i563;
+import 'package:box_app/api_register/repository/create_acc_user_repository_impl.dart'
+    as _i754;
 import 'package:box_app/api_verify_code/date/auth_remote_data_source.dart'
     as _i690;
 import 'package:box_app/api_verify_code/date/auth_remote_data_sourceImpl.dart'
@@ -114,6 +123,13 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i690.AuthRemoteDataSource>(() =>
         _i258.AuthRemoteDataSourceImpl(apiConsumer: gh<_i550.ApiConsumer>()));
+    gh.factory<_i843.CreateAccUserRemoteDataSource>(() =>
+        _i1049.CreateAccUserRemoteDataSourceImpl(
+            apiConsumer: gh<_i550.ApiConsumer>()));
+    gh.factory<_i563.CreateAccUserRepository>(() =>
+        _i754.CreateAccUserRepositoryImpl(
+            createAccUserRemoteDataSource:
+                gh<_i843.CreateAccUserRemoteDataSource>()));
     gh.factory<_i282.AuthRepository>(() => _i877.AuthRepositoryImpl(
           authRemoteDataSource: gh<_i690.AuthRemoteDataSource>(),
           authLocalDataSource: gh<_i145.AuthLocalDataSource>(),
@@ -124,6 +140,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i227.DeviceInfo>(),
         ));
     gh.factory<_i232.PinCodeCubit>(() => _i232.PinCodeCubit(
+          gh<_i282.AuthRepository>(),
+          gh<_i894.SettingRepository>(),
+          gh<_i224.UserCubit>(),
+        ));
+    gh.factory<_i372.CreateAccUserCubit>(() => _i372.CreateAccUserCubit(
+          gh<_i563.CreateAccUserRepository>(),
           gh<_i282.AuthRepository>(),
           gh<_i894.SettingRepository>(),
           gh<_i224.UserCubit>(),
