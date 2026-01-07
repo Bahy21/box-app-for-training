@@ -1,6 +1,5 @@
 part of 'login_page_w_import.dart';
 
-
 class LoginPageShowBottomsheet extends StatelessWidget {
   const LoginPageShowBottomsheet({super.key});
 
@@ -10,8 +9,9 @@ class LoginPageShowBottomsheet extends StatelessWidget {
 
     return BlocConsumer<CreateAccUserCubit, CreateAccUserState>(
       listener: (context, state) {
-        /// ✅ لو التسجيل نجح
+        // لو التسجيل نجح
         if (state is RegisterSuccess) {
+          // عرض البوتوم شيت
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
@@ -75,10 +75,20 @@ class LoginPageShowBottomsheet extends StatelessWidget {
         return AbsorbPointer(
           absorbing: isLoading,
           child: GestureDetector(
-            onTap: () {
+            onTap: () async {
               if (isLoading) return;
 
-              /// استدعاء التسجيل
+              /// ✅ استدعاء إنشاء الحساب مع Token ديناميكي
+              final token = await getToken(); // دالة تجيب Token صح
+
+              if (token == null) {
+                showToast(
+                  text: "لا يمكن الحصول على رمز الدخول، سجل دخول أولاً",
+                  state: ToastStates.error,
+                );
+                return;
+              }
+
               cubit.createAcc(
                 param: CreateAccUserParam(
                   fullName: cubit.fullNameCtrl.text,
@@ -88,7 +98,7 @@ class LoginPageShowBottomsheet extends StatelessWidget {
                   cityId: '',
                 ),
                 context: context,
-                token: 'token',
+                token: token,
               );
             },
             child: Padding(
@@ -113,7 +123,7 @@ class LoginPageShowBottomsheet extends StatelessWidget {
                     ),
                   )
                       : const Text(
-                    "تسجيل الدخول",
+                    "تسجيل الحساب",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -127,5 +137,16 @@ class LoginPageShowBottomsheet extends StatelessWidget {
         );
       },
     );
+  }
+
+  /// دالة وهمية تجيب Token صح
+  /// ممكن تحط هنا أي طريقة تجيب الـ Token من Login أو SharedPreferences
+  Future<String?> getToken() async {
+    // مثال: لو مخزن Token في UserCubit
+    // final userCubit = getIt<UserCubit>();
+    // return userCubit.token;
+
+    // حاليا رجع قيمة ثابتة للتجربة
+    return "الصحيح_token_من_backend";
   }
 }

@@ -12,7 +12,9 @@ class CreateAccUserParam {
   CreateAccUserParam({
     required this.name,
     required this.email,
-    required this.cityId, required String fullName, required String city,
+    required this.cityId,
+    required String fullName,
+    required String city,
   });
 
   Map<String, dynamic> toJson() => {
