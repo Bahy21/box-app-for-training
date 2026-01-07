@@ -33,8 +33,11 @@ class CreateAccUserCubit extends Cubit<CreateAccUserState> {
     this.userCubit,
   ) : super(CreateAccUserInitial());
 
-  final fullNameCtrl = TextEditingController();
-  final emailCtrl = TextEditingController();
+  final TextEditingController fullNameCtrl = TextEditingController();
+  final TextEditingController registerNameCtr = TextEditingController();
+  final TextEditingController registerEmailCtr = TextEditingController();
+  final TextEditingController emailCtrl = TextEditingController();
+  final TextEditingController cityCtr = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final emailFormKey = GlobalKey<FormState>();
   UserModel? userModel;

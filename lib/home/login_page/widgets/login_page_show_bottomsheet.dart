@@ -6,11 +6,11 @@ class LoginPageShowBottomsheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.sizeOf(context).width;
 
     return BlocConsumer<CreateAccUserCubit, CreateAccUserState>(
       listener: (context, state) {
-        /// ✅ لو التسجيل نجح
+
         if (state is RegisterSuccess) {
           showModalBottomSheet(
             context: context,
@@ -77,15 +77,13 @@ class LoginPageShowBottomsheet extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               if (isLoading) return;
-
-              /// استدعاء التسجيل
               cubit.createAcc(
                 param: CreateAccUserParam(
                   fullName: cubit.fullNameCtrl.text,
-                  email: cubit.emailCtrl.text,
+                  email: cubit.registerEmailCtr.text,
                   city: cubit.dropDownVal ?? '',
-                  name: '',
-                  cityId: '',
+                  name: cubit.registerNameCtr.text,
+                  cityId: cubit.cityCtr.text,
                 ),
                 context: context,
                 token: 'token',
