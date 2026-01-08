@@ -7,7 +7,7 @@ class ScreenName extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<CreateAccUserCubit>(
       create: (_) => getIt<CreateAccUserCubit>(),
-      child: const Scaffold(
+      child:  Scaffold(
         appBar: LoginPageAppBar(),
         body: SingleChildScrollView(
           child: Padding(

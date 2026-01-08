@@ -14,3 +14,4 @@ part 'login_page_app_bar.dart';
 part 'login_page_screen.dart';
 part 'login_page_text_title.dart';
 part 'login_page_show_bottomsheet.dart';
+part 'register_bottom_sheet.dart';
