@@ -77,6 +77,8 @@ class LoginPageShowBottomsheet extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               if (isLoading) return;
+              var token =  context.read<UserCubit>().token;
+              if(token ==null || token.isEmpty == true) return ;
               cubit.createAcc(
                 param: CreateAccUserParam(
                   fullName: cubit.fullNameCtrl.text,
@@ -86,7 +88,7 @@ class LoginPageShowBottomsheet extends StatelessWidget {
                   cityId: cubit.cityCtr.text,
                 ),
                 context: context,
-                token: 'token',
+                token: token,
               );
             },
             child: Padding(
