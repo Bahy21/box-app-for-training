@@ -5,7 +5,8 @@ class LoginPageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    final cubit = context.read<CreateAccUserCubit>();
+    return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Align(
@@ -19,7 +20,9 @@ class LoginPageScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        const CustomTextField(hintText: "My name"),
+        CustomTextField(hintText: "My name",
+         controller: cubit.registerNameCtr,
+        ),
         const SizedBox(height: 30),
         const Align(
           alignment: Alignment.centerRight,
@@ -32,8 +35,9 @@ class LoginPageScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        const CustomTextField(
+        CustomTextField(
           hintText: "E-mail",
+          controller: cubit.registerEmailCtr,
         ),
         const SizedBox(height: 30),
         const Align(
@@ -46,8 +50,9 @@ class LoginPageScreen extends StatelessWidget {
             ),
           ),
         ),
-        const CustomTextField(
-          suffixIcon: Icon(
+        CustomTextField(
+          controller:   cubit.cityCtr,
+          suffixIcon: const Icon(
             Icons.keyboard_arrow_down_sharp,
             size: 20,
             color: Colors.black,
@@ -67,7 +72,7 @@ class LoginPageScreen extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
       ],
     );
   }

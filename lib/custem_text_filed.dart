@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
     this.width,
     this.height,
     this.contentPadding,
+    this.controller,
   });
 
   final String? hintText;
@@ -28,6 +29,8 @@ class CustomTextField extends StatelessWidget {
   // التحكم في المسافات داخل التيكست فيلد
   final EdgeInsetsGeometry? contentPadding;
 
+  final TextEditingController? controller;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -35,6 +38,7 @@ class CustomTextField extends StatelessWidget {
       height: height, // لازم تضبط padding لو كبرته
       child: TextField(
         textAlign: TextAlign.right,
+        controller: controller,
         textDirection: TextDirection.rtl,
         decoration: InputDecoration(
           hintText: hintText,
