@@ -3,7 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../api_verify_code/active_acc_param.dart';
 import '../../api_verify_code/pin_code_cubit/pin_code_cubit.dart';
+import '../../api_verify_code/pin_code_cubit/user_cubit.dart';
 import '../../core/di/di.dart';
+import '../../core/util/extensions/navigation.dart';
+import '../../core/util/routing/routes.dart';
 import '../login_page/login_page_import.dart'; // الشاشة اللي هتروح لها بعد النجاح
 
 class NextPage extends StatefulWidget {
@@ -216,6 +219,11 @@ class _NextPageState extends State<NextPage> {
                   listener: (context, state) {
                     if (state is PinCodeSuccess) {
                       _showSuccessDialog();
+                    } else if (state is FirstLoginSuccess) {
+                      // Save token to UserCubit and navigate to account creation screen
+                      getIt<UserCubit>().updateToken(state.token).then((_) {
+                        context.pushWithNamed(Routes.createAccUserView);
+                      });
                     }
                   },
                   builder: (context, state) {

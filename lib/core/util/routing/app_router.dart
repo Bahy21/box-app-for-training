@@ -1,10 +1,14 @@
 import 'dart:io';
 
 import 'package:box_app/api_verify_code/date/pin_code_argument.dart';
+import 'package:box_app/api_verify_code/pin_code_cubit/user_cubit.dart';
+import 'package:box_app/core/di/di.dart';
 import 'package:box_app/core/util/routing/routes.dart';
 import 'package:box_app/core/framework/navigation_animation.dart';
 import 'package:box_app/home/send_otp_page/send_otp_page.dart';
+import 'package:box_app/home/login_page/login_page_import.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -21,6 +25,13 @@ class AppRouter {
         final pinCodeArgument = arguments;
         return _buildRoute(
           builder: (_) => NextPage(phone: pinCodeArgument.phone),
+        );
+      case Routes.createAccUserView:
+        return _buildRoute(
+          builder: (_) => BlocProvider<UserCubit>.value(
+            value: getIt<UserCubit>(),
+            child: const ScreenName(),
+          ),
         );
       default:
         return _buildRoute(
