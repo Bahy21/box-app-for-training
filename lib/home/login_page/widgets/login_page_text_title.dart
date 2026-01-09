@@ -11,10 +11,12 @@ class LoginPageTextTitle extends StatelessWidget {
         const Align(
           alignment: Alignment.centerRight,
           child: Text(
-            "مرحباً بك من جديد",
+            "مرحباً بك من جديد !",
             style: TextStyle(
+              fontFamily: 'DINNextLTArabic',
+              fontWeight: FontWeight.w600,
+
               fontSize: 22,
-              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -24,8 +26,11 @@ class LoginPageTextTitle extends StatelessWidget {
           child: Text(
             "أدخل بياناتك لإنشاء حساب جديد",
             style: TextStyle(
+              fontFamily: 'DINNextLTArabic',
+              fontWeight: FontWeight.w600,
+
               fontSize: 18,
-              color: Colors.black54,
+              color: Colors.grey,
             ),
           ),
         ),

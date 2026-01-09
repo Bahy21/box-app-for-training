@@ -30,7 +30,7 @@ class AppRouter {
         return _buildRoute(
           builder: (_) => BlocProvider<UserCubit>.value(
             value: getIt<UserCubit>(),
-            child: const ScreenName(),
+            child: const Register(),
           ),
         );
       default:

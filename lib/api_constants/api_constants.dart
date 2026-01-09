@@ -3,6 +3,8 @@ class ApiConstants{
   static const login = 'auth/login';
   static const activeAcc = 'auth/verify-code';
   static const completeRegistration = 'auth/client/register';
+  static const cities = 'general/cities';
+
 
 
 }

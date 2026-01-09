@@ -7,10 +7,10 @@ import '../../api_verify_code/pin_code_cubit/user_cubit.dart';
 import '../../core/di/di.dart';
 import '../../core/util/extensions/navigation.dart';
 import '../../core/util/routing/routes.dart';
-import '../login_page/login_page_import.dart'; // الشاشة اللي هتروح لها بعد النجاح
+import '../login_page/login_page_import.dart';
 
 class NextPage extends StatefulWidget {
-  final String phone; // رقم المستخدم
+  final String phone;
   const NextPage({super.key, required this.phone});
 
   @override
@@ -44,11 +44,21 @@ class _NextPageState extends State<NextPage> {
   String get otp =>
       "${_controller1.text}${_controller2.text}${_controller3.text}${_controller4.text}";
 
-  Widget _otpBox(TextEditingController ctrl, FocusNode currentFocus,
-      FocusNode? nextFocus, double size) {
-    return SizedBox(
+  Widget _otpBox(
+      TextEditingController ctrl,
+      FocusNode currentFocus,
+      FocusNode? nextFocus,
+      FocusNode? previousFocus,
+      double size,
+      ) {
+    return Container(
       width: size,
       height: size,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100, // اللون الداخلي
+        shape: BoxShape.circle,       // شكل دائري كامل
+      ),
+      alignment: Alignment.center,
       child: TextField(
         controller: ctrl,
         focusNode: currentFocus,
@@ -56,18 +66,20 @@ class _NextPageState extends State<NextPage> {
         keyboardType: TextInputType.number,
         maxLength: 1,
         style: TextStyle(fontSize: size * 0.35, fontWeight: FontWeight.bold),
-        decoration: InputDecoration(
-          counterText: "",
-          filled: true,
-          fillColor: Colors.grey.shade300,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(size / 2),
-          ),
+        decoration: const InputDecoration(
+          counterText: "", // إخفاء العداد
+          border: InputBorder.none, // إزالة أي بوردر
         ),
         onChanged: (value) {
           if (value.length == 1) {
             currentFocus.unfocus();
-            if (nextFocus != null) FocusScope.of(context).requestFocus(nextFocus);
+            if (nextFocus != null) {
+              FocusScope.of(context).requestFocus(nextFocus);
+            }
+          }
+
+          if (value.isEmpty && previousFocus != null) {
+            FocusScope.of(context).requestFocus(previousFocus);
           }
         },
       ),
@@ -82,14 +94,14 @@ class _NextPageState extends State<NextPage> {
       context: context,
       useRootNavigator: false,
       barrierDismissible: false,
-      builder: (BuildContext context) {
+      builder: (context) {
         return Dialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
           child: SizedBox(
-            width: width * 0.3,   // 👈 30% من عرض الشاشة
-            height: height * 0.4, // 👈 30% من ارتفاع الشاشة
+            width: width * 0.3,
+            height: height * 0.4,
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
@@ -103,21 +115,18 @@ class _NextPageState extends State<NextPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   Image.asset(
                     "assets/images/Frame.png",
                     height: height * 0.12,
-                    fit: BoxFit.contain,
                   ),
-
                   SizedBox(
                     width: double.infinity,
                     height: height * 0.05,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pop(); // اقفل الدايلوج
+                        Navigator.of(context).pop();
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => ScreenName()),
+                          MaterialPageRoute(builder: (_) => Register()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -143,6 +152,7 @@ class _NextPageState extends State<NextPage> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -152,14 +162,11 @@ class _NextPageState extends State<NextPage> {
     return BlocProvider(
       create: (context) => getIt<PinCodeCubit>(),
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          automaticallyImplyLeading: false,
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.arrow_forward),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
+          backgroundColor: Colors.white,
+
+          automaticallyImplyLeading: true,
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.02),
@@ -171,8 +178,10 @@ class _NextPageState extends State<NextPage> {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "التحقق من رقم الجوال!",
-                  style:
-                  TextStyle(fontSize: width * 0.06, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: width * 0.06,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(height: height * 0.01),
@@ -195,32 +204,23 @@ class _NextPageState extends State<NextPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _otpBox(_controller1, _focus1, _focus2, otpSize),
+                  _otpBox(_controller1, _focus1, _focus2, null, otpSize),
                   SizedBox(width: width * 0.03),
-                  _otpBox(_controller2, _focus2, _focus3, otpSize),
+                  _otpBox(_controller2, _focus2, _focus3, _focus1, otpSize),
                   SizedBox(width: width * 0.03),
-                  _otpBox(_controller3, _focus3, _focus4, otpSize),
+                  _otpBox(_controller3, _focus3, _focus4, _focus2, otpSize),
                   SizedBox(width: width * 0.03),
-                  _otpBox(_controller4, _focus4, null, otpSize),
+                  _otpBox(_controller4, _focus4, null, _focus3, otpSize),
                 ],
-              ),
-              SizedBox(height: height * 0.02),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "إعادة إرسال الكود بعد",
-                  style: TextStyle(fontSize: width * 0.045, color: Colors.black54),
-                ),
               ),
               const Spacer(),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                padding: const EdgeInsets.symmetric(horizontal: 7),
                 child: BlocConsumer<PinCodeCubit, PinCodeState>(
                   listener: (context, state) {
                     if (state is PinCodeSuccess) {
                       _showSuccessDialog();
                     } else if (state is FirstLoginSuccess) {
-                      // Save token to UserCubit and navigate to account creation screen
                       getIt<UserCubit>().updateToken(state.token).then((_) {
                         context.pushWithNamed(Routes.createAccUserView);
                       });
@@ -228,7 +228,8 @@ class _NextPageState extends State<NextPage> {
                   },
                   builder: (context, state) {
                     final cubit = context.read<PinCodeCubit>();
-                    final isLoading = state is PinCodeLoading || state is ResendCodeLoading;
+                    final isLoading =
+                        state is PinCodeLoading || state is ResendCodeLoading;
 
                     return SizedBox(
                       width: width,
@@ -253,13 +254,9 @@ class _NextPageState extends State<NextPage> {
                           ),
                         ),
                         child: isLoading
-                            ? const SizedBox(
-                          width: 24,
-                          height: 24,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2.5,
-                            color: Colors.white,
-                          ),
+                            ? const CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 2.5,
                         )
                             : Text(
                           "تحقق الآن",

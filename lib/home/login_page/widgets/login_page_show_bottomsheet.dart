@@ -10,6 +10,8 @@ class LoginPageShowBottomsheet extends StatelessWidget {
 
     return BlocConsumer<CreateAccUserCubit, CreateAccUserState>(
       listener: (context, state) {
+        if (!context.mounted) return;
+
 
         if (state is RegisterSuccess) {
           showModalBottomSheet(
@@ -113,7 +115,7 @@ class LoginPageShowBottomsheet extends StatelessWidget {
                     ),
                   )
                       : const Text(
-                    "تسجيل الدخول",
+                    "إنشاء حساب",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

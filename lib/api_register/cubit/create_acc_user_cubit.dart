@@ -24,6 +24,8 @@ class CreateAccUserCubit extends Cubit<CreateAccUserState> {
   final CreateAccUserRepository repository;
   final AuthRepository authRepository;
   final SettingRepository settingRepository;
+  final TextEditingController cityCtrl = TextEditingController(); // هنا
+
   final UserCubit userCubit;
 
   CreateAccUserCubit(

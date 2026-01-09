@@ -20,7 +20,7 @@ class LoginPageScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        CustomTextField(hintText: "My name",
+        CustomTextField(hintText: "الأسم الأول",
          controller: cubit.registerNameCtr,
         ),
         const SizedBox(height: 30),
@@ -36,7 +36,7 @@ class LoginPageScreen extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         CustomTextField(
-          hintText: "E-mail",
+          hintText: "البريد الإلكتروني",
           controller: cubit.registerEmailCtr,
         ),
         const SizedBox(height: 30),
@@ -50,25 +50,85 @@ class LoginPageScreen extends StatelessWidget {
             ),
           ),
         ),
-        CustomTextField(
-          controller:   cubit.cityCtr,
-          suffixIcon: const Icon(
-            Icons.keyboard_arrow_down_sharp,
-            size: 20,
-            color: Colors.black,
+        CustomDropDownField(
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 15,
+            horizontal: 12,
           ),
-          hintText: "City",
+          value: cubit.dropDownVal,
+          hintText: 'حدد المدينة'.tr(),
+          hintStyle: AppTextStyles.textStyle14(
+            context,
+          ).copyWith(color: context.themeColors.textPrimary),
+          autoValidateMode: AutovalidateMode.onUserInteraction,
+          validator: AppValidator.dropDownCityValidator(),
+          items: List.generate(
+            cubit.cities.length,
+                (index) => DropdownMenuItem(
+              value: cubit.cities[index].id.toString(),
+              child: Text(
+                cubit.cities[index].name,
+                style: AppTextStyles.textStyle14(
+                  context,
+                ),
+              ),
+            ),
+          ),
+          onChanged: (value) {
+            cubit.changeValue(value);
+          },
         ),
         const SizedBox(
           height: 150,
         ),
-        const Align(
-          alignment: Alignment.center,
-          child: Text(
-            "من خلال إنشاء حساب فإنك توافق على الشروط والأحكام و سياسة الخصوصية",
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.black,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: RichText(
+            textAlign: TextAlign.right,
+            text: const TextSpan(
+              children: [
+                TextSpan(
+                  text: "من خلال إنشاء حساب فإنك توافق على ",
+                  style: TextStyle(
+                    fontFamily: 'DINNextLTArabic',
+                    fontWeight: FontWeight.w600,
+
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+                TextSpan(
+                  text: "الشروط والأحكام           ",
+                  style: TextStyle(
+                    fontFamily: 'DINNextLTArabic',
+                    fontWeight: FontWeight.w600,
+
+                    fontSize: 16,
+                    color: Colors.orange,
+                  ),
+                ),
+                TextSpan(
+                  text: "و ",
+                  style: TextStyle(
+                    fontFamily: 'DINNextLTArabic',
+                    fontWeight: FontWeight.w600,
+
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+
+                TextSpan(
+                  text: "سياسة الخصوصية",
+                  style: TextStyle(
+                    fontFamily: 'DINNextLTArabic',
+                    fontWeight: FontWeight.w600,
+
+                    fontSize: 16,
+                    color: Colors.orange,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

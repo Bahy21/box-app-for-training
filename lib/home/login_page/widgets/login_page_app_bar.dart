@@ -5,6 +5,7 @@ class LoginPageAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
       actions: [
         IconButton(

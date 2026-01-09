@@ -20,8 +20,10 @@ class ShowRegistrationScreenContinue extends StatelessWidget {
             const Text(
               "المتابعة كزائر",
               style: TextStyle(
+                fontFamily: 'DINNextLTArabic', // 👈 الخط هنا
+                fontWeight: FontWeight.w700,    // Medium
+
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
@@ -36,8 +38,10 @@ class ShowRegistrationScreenContinue extends StatelessWidget {
           child: Text(
             "مرحباً بك!",
             style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
+              fontFamily: 'DINNextLTArabic',
+
+              fontSize: 25,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -49,6 +53,9 @@ class ShowRegistrationScreenContinue extends StatelessWidget {
           child: Text(
             "أدخل رقم جوالك لتسجيل الدخول",
             style: TextStyle(
+                fontFamily: 'DINNextLTArabic',
+                fontWeight: FontWeight.w400,
+
               fontSize:22 ,
               color: Colors.grey
 
@@ -61,7 +68,10 @@ class ShowRegistrationScreenContinue extends StatelessWidget {
           child: Text(
             "رقم الجوال",
             style: TextStyle(
-              fontSize: 22,
+              fontFamily: 'DINNextLTArabic',
+              fontWeight: FontWeight.w700,
+
+              fontSize: 23,
             ),
           ),
         ),

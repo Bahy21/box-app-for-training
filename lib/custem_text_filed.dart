@@ -10,11 +10,13 @@ class CustomTextField extends StatelessWidget {
     this.suffixIconPath,
     this.width,
     this.height,
-    this.contentPadding,
-    this.controller,
+    this.contentPadding, this.controller,
+
   });
 
   final String? hintText;
+  final TextEditingController? controller;
+
 
   // الأيقونات
   final Widget? prefixIcon;
@@ -29,7 +31,6 @@ class CustomTextField extends StatelessWidget {
   // التحكم في المسافات داخل التيكست فيلد
   final EdgeInsetsGeometry? contentPadding;
 
-  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
