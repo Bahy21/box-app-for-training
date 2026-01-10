@@ -9,14 +9,13 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   void initState() {
-    context.read<CreateAccUserCubit>().fetchCities();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CreateAccUserCubit>(
-      create: (_) => getIt<CreateAccUserCubit>(),
+      create: (_) => getIt<CreateAccUserCubit>()..fetchCities(),
       child: const Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.white,

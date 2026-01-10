@@ -50,32 +50,63 @@ class LoginPageScreen extends StatelessWidget {
             ),
           ),
         ),
-        CustomDropDownField(
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 15,
-            horizontal: 12,
-          ),
-          value: cubit.dropDownVal,
-          hintText: 'حدد المدينة'.tr(),
-          hintStyle: AppTextStyles.textStyle14(
-            context,
-          ).copyWith(color: context.themeColors.textPrimary),
-          autoValidateMode: AutovalidateMode.onUserInteraction,
-          validator: AppValidator.dropDownCityValidator(),
-          items: List.generate(
-            cubit.cities.length,
+        BlocBuilder<CreateAccUserCubit, CreateAccUserState>(
+          builder: (context, state) {
+            final cubit = context.read<CreateAccUserCubit>();
+            
+            // Show loading indicator while fetching cities
+            if (state is GetCitiesLoading) {
+              return const SizedBox(
+                height: 60,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+            
+            // Show error message if cities fetch failed
+            if (state is GetCitiesFailure) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  state.error,
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 12,
+                  ),
+                ),
+              );
+            }
+            
+            // Show dropdown when cities are loaded
+            return CustomDropDownField(
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 15,
+                horizontal: 12,
+              ),
+              value: cubit.dropDownVal,
+              hintText: 'حدد المدينة'.tr(),
+              hintStyle: AppTextStyles.textStyle14(
+                context,
+              ).copyWith(color: context.themeColors.textPrimary),
+              autoValidateMode: AutovalidateMode.onUserInteraction,
+              validator: AppValidator.dropDownCityValidator(),
+              items: List.generate(
+                cubit.cities.length,
                 (index) => DropdownMenuItem(
-              value: cubit.cities[index].id.toString(),
-              child: Text(
-                cubit.cities[index].name,
-                style: AppTextStyles.textStyle14(
-                  context,
+                  value: cubit.cities[index].id.toString(),
+                  child: Text(
+                    cubit.cities[index].name,
+                    style: AppTextStyles.textStyle14(
+                      context,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-          onChanged: (value) {
-            cubit.changeValue(value);
+              onChanged: (value) {
+                cubit.changeValue(value);
+              },
+            );
           },
         ),
         const SizedBox(
