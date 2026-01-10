@@ -15,13 +15,10 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider<CreateAccUserCubit>(
       create: (_) => getIt<CreateAccUserCubit>(),
-      //create: (_) => getIt<CreateAccUserCubit>()..fetchCities(),
       child: const Scaffold(
         resizeToAvoidBottomInset: true,
-
         backgroundColor: Colors.white,
         appBar: LoginPageAppBar(),
 
