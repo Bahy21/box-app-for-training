@@ -1,14 +1,6 @@
-import 'package:box_app/core/constants/app_assets.dart';
-import 'package:box_app/core/constants/app_text_styles.dart';
-import 'package:box_app/core/framework/theme_cubit.dart';
-import 'package:box_app/core/theme/theme_provider.dart';
 import 'package:box_app/core/framework/spaces.dart';
-import 'package:box_app/core/util/extensions/navigation.dart';
-import 'package:box_app/core/util/routing/routes.dart';
 import 'package:box_app/core/widgets/custom_button.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
