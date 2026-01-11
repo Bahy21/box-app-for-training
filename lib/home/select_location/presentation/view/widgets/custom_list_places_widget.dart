@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../cubits/search_places_cubit/search_places_bloc.dart';
 
+
 class CustomListPlacesWidget extends StatelessWidget {
   final SearchPlacesBloc bloc;
 

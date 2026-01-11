@@ -1,7 +1,6 @@
 import 'package:box_app/core/widgets/custom_error.dart';
 import 'package:box_app/core/widgets/custom_loading.dart';
 import 'package:box_app/home/select_location/presentation/view/widgets/custom_current_location_widget.dart';
-import 'package:box_app/home/select_location/presentation/view/widgets/custom_search_location_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,11 +49,6 @@ class _SelectLocationViewState extends State<SelectLocationView> {
                       onCameraIdle: () {
                         cubit.onCloseCamera();
                       },
-                    ),
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [CustomSearchLocationWidget(cubit: cubit)],
-                      ),
                     ),
                     PositionedDirectional(
                       end: 24,

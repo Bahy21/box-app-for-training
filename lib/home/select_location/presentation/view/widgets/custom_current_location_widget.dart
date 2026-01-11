@@ -32,7 +32,6 @@ class CustomCurrentLocationWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
       decoration: BoxDecoration(
-        color: context.themeColors.cardBackground,
         borderRadius: BorderRadiusDirectional.only(
           topEnd: Radius.circular(24.r),
           topStart: Radius.circular(24.r),

@@ -55,9 +55,9 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-         // home: HomeSplashScreen(),
+          home: HomeSplashScreen(),
           onGenerateRoute: appRouter.generateRoute,
-           home: SelectLocationViewUI(),
+         //  home: SelectLocationViewUI(),
           //  home: ContactUs(),
           //   home: SubmitReview(),
         );
