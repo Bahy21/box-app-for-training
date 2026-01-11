@@ -1,5 +1,6 @@
 import 'package:box_app/core/di/di.dart';
 import 'package:box_app/core/util/routing/app_router.dart';
+import 'package:box_app/screen/gps.dart';
 import 'package:box_app/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -54,9 +55,9 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: HomeSplashScreen(),
+         // home: HomeSplashScreen(),
           onGenerateRoute: appRouter.generateRoute,
-          // home: Home(),
+           home: SelectLocationViewUI(),
           //  home: ContactUs(),
           //   home: SubmitReview(),
         );

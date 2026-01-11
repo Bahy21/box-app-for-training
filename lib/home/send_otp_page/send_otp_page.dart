@@ -7,7 +7,7 @@ import '../../api_verify_code/pin_code_cubit/user_cubit.dart';
 import '../../core/di/di.dart';
 import '../../core/util/extensions/navigation.dart';
 import '../../core/util/routing/routes.dart';
-import '../login_page/login_page_import.dart';
+import '../Register/login_page_import.dart';
 
 class NextPage extends StatefulWidget {
   final String phone;

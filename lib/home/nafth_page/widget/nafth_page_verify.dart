@@ -10,7 +10,7 @@ class NafthPageVerify extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Gps()),
+          MaterialPageRoute(builder: (context) => SelectLocationViewUI()),
         );
       },
     );

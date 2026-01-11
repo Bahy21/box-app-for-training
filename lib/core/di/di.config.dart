@@ -13,15 +13,6 @@ import 'package:box_app/api_constants/auth_repository/auth_repository.dart'
     as _i282;
 import 'package:box_app/api_constants/auth_repository/auth_repository_Impl.dart'
     as _i877;
-import 'package:box_app/api_register/cubit/create_acc_user_cubit.dart' as _i372;
-import 'package:box_app/api_register/remote/create_acc_user_remote_data_source.dart'
-    as _i843;
-import 'package:box_app/api_register/remote/create_acc_user_remote_data_source_impl.dart'
-    as _i1049;
-import 'package:box_app/api_register/repository/create_acc_user_repository.dart'
-    as _i563;
-import 'package:box_app/api_register/repository/create_acc_user_repository_impl.dart'
-    as _i754;
 import 'package:box_app/api_verify_code/date/auth_remote_data_source.dart'
     as _i690;
 import 'package:box_app/api_verify_code/date/auth_remote_data_sourceImpl.dart'
@@ -59,8 +50,6 @@ import 'package:box_app/core/helpers/image_helper.dart' as _i596;
 import 'package:box_app/core/helpers/psermission_services.dart' as _i82;
 import 'package:box_app/core/local/shared_preferences/shared_pref_services.dart'
     as _i825;
-import 'package:box_app/home/login_page/cubit/login_cubit/login_cubit.dart'
-    as _i222;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:image_picker/image_picker.dart' as _i183;
@@ -68,6 +57,13 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
     as _i161;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
+
+import '../../home/show_registration_screen/cubit/login_cubit/login_cubit.dart' as _i222;
+import '../../register/cubit/create_acc_user_cubit.dart' as _i372;
+import '../../register/remote/create_acc_user_remote_data_source.dart' as _i843;
+import '../../register/remote/create_acc_user_remote_data_source_impl.dart' as _i1049;
+import '../../register/repository/create_acc_user_repository.dart' as _i563;
+import '../../register/repository/create_acc_user_repository_impl.dart' as _i754;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt

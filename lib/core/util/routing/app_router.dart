@@ -6,9 +6,10 @@ import 'package:box_app/core/di/di.dart';
 import 'package:box_app/core/util/routing/routes.dart';
 import 'package:box_app/core/framework/navigation_animation.dart';
 import 'package:box_app/home/send_otp_page/send_otp_page.dart';
-import 'package:box_app/home/login_page/login_page_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../home/Register/login_page_import.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
