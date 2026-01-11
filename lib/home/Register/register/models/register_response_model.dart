@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../api_verify_code/user_model.dart';
+import '../../../../api_verify_code/user_model.dart';
 
 part 'register_response_model.g.dart';
 

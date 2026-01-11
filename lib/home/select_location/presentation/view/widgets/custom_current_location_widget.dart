@@ -1,5 +1,6 @@
 import 'package:box_app/core/framework/spaces.dart';
 import 'package:box_app/core/widgets/custom_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -62,6 +63,8 @@ class CustomCurrentLocationWidget extends StatelessWidget {
               }
             },
             isLoading: state is UpdateLocationLoading,
+            text: 'confirmLocation'.tr(),
+
           )        ],
       ),
     );

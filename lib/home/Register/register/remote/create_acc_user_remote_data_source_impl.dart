@@ -3,7 +3,7 @@ import 'package:box_app/core/api/base_response.dart';
 import 'package:box_app/core/constants/api_constants.dart';
 import 'package:box_app/core/errors/exceptions.dart';
 import 'package:injectable/injectable.dart';
-import '../../api_verify_code/pin_code_cubit/models/city_model.dart';
+import '../../../../api_verify_code/pin_code_cubit/models/city_model.dart';
 import '../models/register_response_model.dart';
 import '../params/create_acc_user_param.dart';
 import 'create_acc_user_remote_data_source.dart';

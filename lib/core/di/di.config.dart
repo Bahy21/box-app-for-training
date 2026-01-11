@@ -58,13 +58,12 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
     as _i161;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../home/Register/register/cubit/create_acc_user_cubit.dart' as _i372;
+import '../../home/Register/register/remote/create_acc_user_remote_data_source.dart' as _i843;
+import '../../home/Register/register/remote/create_acc_user_remote_data_source_impl.dart' as _i1049;
+import '../../home/Register/register/repository/create_acc_user_repository.dart' as _i563;
+import '../../home/Register/register/repository/create_acc_user_repository_impl.dart' as _i754;
 import '../../home/show_registration_screen/cubit/login_cubit/login_cubit.dart' as _i222;
-import '../../register/cubit/create_acc_user_cubit.dart' as _i372;
-import '../../register/remote/create_acc_user_remote_data_source.dart' as _i843;
-import '../../register/remote/create_acc_user_remote_data_source_impl.dart' as _i1049;
-import '../../register/repository/create_acc_user_repository.dart' as _i563;
-import '../../register/repository/create_acc_user_repository_impl.dart' as _i754;
-
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
   Future<_i174.GetIt> init({

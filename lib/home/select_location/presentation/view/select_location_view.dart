@@ -24,6 +24,19 @@ class _SelectLocationViewState extends State<SelectLocationView> {
   void initState() {
     final cubit = context.read<SelectLocationCubit>();
     cubit.checkPermission();
+    // Set search params if provided (for units search flow or navigate to home)
+    // Check if from registration: navigateToHome is true and serviceId is empty
+    final isFromRegistration = widget.argument.navigateToHome &&
+        (widget.argument.serviceId.isEmpty ||
+            widget.argument.serviceId == '');
+    cubit.setSearchParams(
+      method: widget.argument.method,
+      perPage: widget.argument.perPage,
+      navigateToHome: widget.argument.navigateToHome,
+      isFromRegistration: isFromRegistration,
+    );
+
+    cubit.checkPermission();
     super.initState();
   }
 

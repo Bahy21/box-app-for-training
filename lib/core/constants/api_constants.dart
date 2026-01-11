@@ -17,7 +17,7 @@ class ApiConstants {
   static subServices(String serviceId) => 'sub-services/$serviceId';
   static const banners = 'home/banners';
   static const professions = 'professions';
-  static const completeRegistration = 'auth/client/register';
+  static const completeRegistration = 'auth/client/Register';
   static const updateProfile = 'auth/client/profile';
   static const logout = 'auth/logout';
   static const deleteAcc = 'auth/delete-account';

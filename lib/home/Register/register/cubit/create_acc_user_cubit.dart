@@ -6,13 +6,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../api_constants/auth_repository/auth_repository.dart';
-import '../../api_verify_code/parms/lang_param.dart';
-import '../../api_verify_code/pin_code_cubit/models/city_model.dart';
-import '../../api_verify_code/pin_code_cubit/user_cubit.dart';
-import '../../api_verify_code/repository/setting_repository.dart';
-import '../../api_verify_code/user_model.dart';
-import '../../home/home_page_tap_bar/home_page_tap_bar_import.dart';
+import '../../../../api_constants/auth_repository/auth_repository.dart';
+import '../../../../api_verify_code/parms/lang_param.dart';
+import '../../../../api_verify_code/pin_code_cubit/models/city_model.dart';
+import '../../../../api_verify_code/pin_code_cubit/user_cubit.dart';
+import '../../../../api_verify_code/repository/setting_repository.dart';
+import '../../../../api_verify_code/user_model.dart';
+import '../../../home_page_tap_bar/home_page_tap_bar_import.dart';
 import '../params/create_acc_user_param.dart';
 import '../repository/create_acc_user_repository.dart';
 
