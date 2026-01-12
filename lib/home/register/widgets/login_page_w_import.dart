@@ -1,5 +1,6 @@
 import 'package:box_app/api_verify_code/pin_code_cubit/user_cubit.dart';
 import 'package:box_app/core/constants/app_cached.dart';
+import 'package:box_app/core/di/di.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ import '../../../model_buttom.dart';
 import '../../nafth_page/nafth_page_import.dart';
 import '../../select_location/presentation/args/select_location_arg.dart';
 import '../../select_location/presentation/view/select_location_view.dart';
+import '../../select_location/presentation/cubits/select_location_cubit/select_location_cubit.dart';
 import '../register/cubit/create_acc_user_cubit.dart';
 import '../register/params/create_acc_user_param.dart';
 

@@ -20,6 +20,6 @@ class CreateAccUserParam {
   Map<String, dynamic> toJson() => {
     "name": name,
     "email": email,
-    "cityId":cityId,
+    "city_id":cityId,
   };
 }

@@ -164,7 +164,6 @@ class LoginPageShowBottomsheet extends StatelessWidget {
       builder: (context, state) {
         final bool isLoading = state is CreateAccLoading;
         final cubit = context.read<CreateAccUserCubit>();
-
         return AbsorbPointer(
           absorbing: isLoading,
           child: GestureDetector(
@@ -188,7 +187,7 @@ class LoginPageShowBottomsheet extends StatelessWidget {
                   email: cubit.registerEmailCtr.text,
                   city: cubit.dropDownVal ?? '',
                   name: cubit.registerNameCtr.text,
-                  cityId: cubit.cityCtr.text,
+                  cityId: cubit.dropDownVal??"",
                 ),
                 context: context,
                 token: token,

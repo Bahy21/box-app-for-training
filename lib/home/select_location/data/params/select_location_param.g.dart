@@ -7,9 +7,9 @@ part of 'select_location_param.dart';
 // **************************************************************************
 
 Map<String, dynamic> _$SelectLocationParamToJson(
-  SelectLocationParam instance,
-) => <String, dynamic>{
-  'service_id': instance.serviceId,
-  'lat': instance.lat,
-  'long': instance.long,
-};
+        SelectLocationParam instance) =>
+    <String, dynamic>{
+      'service_id': instance.serviceId,
+      'lat': instance.lat,
+      'long': instance.long,
+    };

@@ -1,3 +1,4 @@
+import 'package:box_app/core/di/di.dart';
 import 'package:box_app/home/select_location/presentation/view/widgets/custom_current_location_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,19 +20,23 @@ class SelectLocationView extends StatefulWidget {
 class _SelectLocationViewState extends State<SelectLocationView> {
   @override
   void initState() {
-    final cubit = context.read<SelectLocationCubit>();
-    final isFromRegistration = widget.argument.navigateToHome &&
-        (widget.argument.serviceId.isEmpty ||
-            widget.argument.serviceId == '');
-    cubit.setSearchParams(
-      method: widget.argument.method,
-      perPage: widget.argument.perPage,
-      navigateToHome: widget.argument.navigateToHome,
-      isFromRegistration: isFromRegistration,
-    );
-
-    cubit.checkPermission();
     super.initState();
+    // Use addPostFrameCallback to ensure the provider is available
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final cubit = context.read<SelectLocationCubit>();
+      final isFromRegistration = widget.argument.navigateToHome &&
+          (widget.argument.serviceId.isEmpty ||
+              widget.argument.serviceId == '');
+      cubit.setSearchParams(
+        method: widget.argument.method,
+        perPage: widget.argument.perPage,
+        navigateToHome: widget.argument.navigateToHome,
+        isFromRegistration: isFromRegistration,
+      );
+
+      cubit.checkPermission();
+    });
   }
 
   @override

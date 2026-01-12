@@ -70,13 +70,13 @@ class _RegisterState extends State<Register> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.white,
-        appBar: const LoginPageAppBar(),
+        appBar: LoginPageAppBar(),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 LoginPageTextTitle(),
                 SizedBox(height: 30),
                 LoginPageScreen(),
