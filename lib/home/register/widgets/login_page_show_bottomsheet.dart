@@ -137,7 +137,7 @@ class LoginPageShowBottomsheet extends StatelessWidget {
  */
 class LoginPageShowBottomsheet extends StatelessWidget {
   const LoginPageShowBottomsheet({super.key});
-
+//      arguments: SelectLocationArg(cityId: cityId),
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
@@ -152,6 +152,7 @@ class LoginPageShowBottomsheet extends StatelessWidget {
             MaterialPageRoute(
               builder: (_) => SelectLocationView(
                 argument: SelectLocationArgument(
+
                   serviceId: '', // ضع أي قيمة مناسبة
                 ),
               ),

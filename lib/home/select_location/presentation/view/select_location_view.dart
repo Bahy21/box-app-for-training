@@ -1,9 +1,6 @@
-import 'package:box_app/core/widgets/custom_error.dart';
-import 'package:box_app/core/widgets/custom_loading.dart';
 import 'package:box_app/home/select_location/presentation/view/widgets/custom_current_location_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -23,9 +20,6 @@ class _SelectLocationViewState extends State<SelectLocationView> {
   @override
   void initState() {
     final cubit = context.read<SelectLocationCubit>();
-    cubit.checkPermission();
-    // Set search params if provided (for units search flow or navigate to home)
-    // Check if from registration: navigateToHome is true and serviceId is empty
     final isFromRegistration = widget.argument.navigateToHome &&
         (widget.argument.serviceId.isEmpty ||
             widget.argument.serviceId == '');

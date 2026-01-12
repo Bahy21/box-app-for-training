@@ -1,12 +1,12 @@
 part of 'login_page_import.dart';
 /*
-class Register extends StatefulWidget {
-  const Register({super.key});
+class register extends StatefulWidget {
+  const register({super.key});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<register> createState() => _RegisterState();
 }
-class _RegisterState extends State<Register> {
+class _RegisterState extends State<register> {
   @override
   void initState() {
     super.initState();
