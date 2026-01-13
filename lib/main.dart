@@ -1,15 +1,19 @@
 import 'package:box_app/core/di/di.dart';
 import 'package:box_app/core/util/routing/app_router.dart';
-import 'package:box_app/screen/gps.dart';
 import 'package:box_app/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'home/register_page_folder/register/cubit/create_acc_user_cubit.dart' show CreateAccUserCubit;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
 
+
+  // Verify GetIt is working
+  print('GetIt initialized: ${getIt.isRegistered<CreateAccUserCubit>()}');
 
   runApp(const MyApp());
 }

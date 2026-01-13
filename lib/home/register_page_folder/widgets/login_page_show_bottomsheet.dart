@@ -136,7 +136,9 @@ class LoginPageShowBottomsheet extends StatelessWidget {
 
  */
 class LoginPageShowBottomsheet extends StatelessWidget {
-  const LoginPageShowBottomsheet({super.key});
+  final CreateAccUserCubit cubit;
+   LoginPageShowBottomsheet({super.key, required this.cubit});
+
 //      arguments: SelectLocationArg(cityId: cityId),
   @override
   Widget build(BuildContext context) {
@@ -150,33 +152,31 @@ class LoginPageShowBottomsheet extends StatelessWidget {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (_) => SelectLocationView(
-                argument: SelectLocationArgument(
-
-                  serviceId: '', // ضع أي قيمة مناسبة
+              builder: (ctx) => BlocProvider<SelectLocationCubit>(
+                create: (context) => getIt<SelectLocationCubit>(),
+                child: SelectLocationView(
+                  argument: SelectLocationArgument(
+                    serviceId: '', // ضع أي قيمة مناسبة
+                  ),
                 ),
               ),
             ),
           );
-        } else if (state is CreateAccFailure) {
-        }
+        } else if (state is CreateAccFailure) {}
       },
       builder: (context, state) {
         final bool isLoading = state is CreateAccLoading;
-        final cubit = context.read<CreateAccUserCubit>();
         return AbsorbPointer(
           absorbing: isLoading,
           child: GestureDetector(
             onTap: () {
               if (isLoading) return;
 
-              // التحقق من أن كل الحقول مليانة
               if (cubit.fullNameCtrl.text.isEmpty ||
                   cubit.registerEmailCtr.text.isEmpty ||
                   cubit.registerNameCtr.text.isEmpty ||
                   cubit.dropDownVal == null ||
-                  cubit.cityCtr.text.isEmpty) {
-              }
+                  cubit.cityCtr.text.isEmpty) {}
 
               var token = context.read<UserCubit>().token;
               if (token == null || token.isEmpty) return;
@@ -187,7 +187,7 @@ class LoginPageShowBottomsheet extends StatelessWidget {
                   email: cubit.registerEmailCtr.text,
                   city: cubit.dropDownVal ?? '',
                   name: cubit.registerNameCtr.text,
-                  cityId: cubit.dropDownVal??"",
+                  cityId: cubit.dropDownVal ?? "",
                 ),
                 context: context,
                 token: token,
@@ -207,21 +207,21 @@ class LoginPageShowBottomsheet extends StatelessWidget {
                 child: Center(
                   child: isLoading
                       ? const SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2.5,
-                      color: Colors.white,
-                    ),
-                  )
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2.5,
+                            color: Colors.white,
+                          ),
+                        )
                       : const Text(
-                    "إنشاء حساب",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                          "إنشاء حساب",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                 ),
               ),
             ),

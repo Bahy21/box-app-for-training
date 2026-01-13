@@ -19,12 +19,12 @@ import '../repository/create_acc_user_repository.dart';
 
 part 'create_acc_user_state.dart';
 
-@injectable
+@lazySingleton
 class CreateAccUserCubit extends Cubit<CreateAccUserState> {
   final CreateAccUserRepository repository;
   final AuthRepository authRepository;
   final SettingRepository settingRepository;
-  final TextEditingController cityCtrl = TextEditingController(); // هنا
+  final TextEditingController cityCtrl = TextEditingController();
 
   final UserCubit userCubit;
 

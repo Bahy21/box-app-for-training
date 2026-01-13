@@ -7,7 +7,7 @@ import '../../api_verify_code/pin_code_cubit/user_cubit.dart';
 import '../../core/di/di.dart';
 import '../../core/util/extensions/navigation.dart';
 import '../../core/util/routing/routes.dart';
-import '../Register/login_page_import.dart';
+import '../register_page_folder/login_page_import.dart';
 
 class NextPage extends StatefulWidget {
   final String phone;
@@ -126,7 +126,7 @@ class _NextPageState extends State<NextPage> {
                       onPressed: () {
                         Navigator.of(context).pop();
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => Register()),
+                          MaterialPageRoute(builder: (_) => RegisterPageContent()),
                         );
                       },
                       style: ElevatedButton.styleFrom(

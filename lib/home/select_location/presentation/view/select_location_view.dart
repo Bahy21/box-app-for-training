@@ -52,7 +52,7 @@ class _SelectLocationViewState extends State<SelectLocationView> {
                     GoogleMap(
                       onMapCreated: cubit.onMapCreate,
                       initialCameraPosition: CameraPosition(
-                        target: cubit.currentLocation!,
+                        target: cubit.currentLocation ?? LatLng(0, 0),
                         zoom: 15.0,
                       ),
                       onCameraMove: (cameraPos) {

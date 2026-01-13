@@ -1,11 +1,11 @@
 part of 'login_page_w_import.dart';
 
 class LoginPageScreen extends StatelessWidget {
-  const LoginPageScreen({super.key});
+   final CreateAccUserCubit cubit;
+   LoginPageScreen({super.key, required this.cubit});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<CreateAccUserCubit>();
     return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -52,8 +52,7 @@ class LoginPageScreen extends StatelessWidget {
         ),
         BlocBuilder<CreateAccUserCubit, CreateAccUserState>(
           builder: (context, state) {
-            final cubit = context.read<CreateAccUserCubit>();
-            
+
             // Show loading indicator while fetching cities
             if (state is GetCitiesLoading) {
               return const SizedBox(

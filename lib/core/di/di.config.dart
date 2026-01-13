@@ -50,6 +50,28 @@ import 'package:box_app/core/helpers/image_helper.dart' as _i596;
 import 'package:box_app/core/helpers/psermission_services.dart' as _i82;
 import 'package:box_app/core/local/shared_preferences/shared_pref_services.dart'
     as _i825;
+import 'package:box_app/home/register_page_folder/register/cubit/create_acc_user_cubit.dart'
+    as _i768;
+import 'package:box_app/home/register_page_folder/register/remote/create_acc_user_remote_data_source.dart'
+    as _i54;
+import 'package:box_app/home/register_page_folder/register/remote/create_acc_user_remote_data_source_impl.dart'
+    as _i966;
+import 'package:box_app/home/register_page_folder/register/repository/create_acc_user_repository.dart'
+    as _i183;
+import 'package:box_app/home/register_page_folder/register/repository/create_acc_user_repository_impl.dart'
+    as _i439;
+import 'package:box_app/home/select_location/data/data_source/remote/select_location_remote_data_source.dart'
+    as _i1030;
+import 'package:box_app/home/select_location/data/data_source/remote/select_location_remote_data_source_impl.dart'
+    as _i1052;
+import 'package:box_app/home/select_location/data/repository/select_location_repository.dart'
+    as _i277;
+import 'package:box_app/home/select_location/data/repository/select_location_repository_impl.dart'
+    as _i820;
+import 'package:box_app/home/select_location/presentation/cubits/select_location_cubit/select_location_cubit.dart'
+    as _i378;
+import 'package:box_app/home/show_registration_screen/cubit/login_cubit/login_cubit.dart'
+    as _i775;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:image_picker/image_picker.dart' as _i183;
@@ -58,12 +80,6 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
     as _i161;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
-import '../../home/Register/register/cubit/create_acc_user_cubit.dart' as _i372;
-import '../../home/Register/register/remote/create_acc_user_remote_data_source.dart' as _i843;
-import '../../home/Register/register/remote/create_acc_user_remote_data_source_impl.dart' as _i1049;
-import '../../home/Register/register/repository/create_acc_user_repository.dart' as _i563;
-import '../../home/Register/register/repository/create_acc_user_repository_impl.dart' as _i754;
-import '../../home/show_registration_screen/cubit/login_cubit/login_cubit.dart' as _i222;
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
   Future<_i174.GetIt> init({
@@ -84,8 +100,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => injectionModule.internetConnection);
     gh.factory<_i361.Dio>(() => injectionModule.dioClient);
     gh.factory<_i183.ImagePicker>(() => injectionModule.imagePicker);
-    gh.factory<_i231.AppNotifications>(() => _i231.AppNotifications());
     gh.factory<_i227.DeviceInfo>(() => _i227.DeviceInfo());
+    gh.factory<_i231.AppNotifications>(() => _i231.AppNotifications());
     gh.factory<_i596.DocumentHelper>(() => _i596.DocumentHelper());
     gh.factory<_i82.PermissionServices>(() => _i82.PermissionServices());
     gh.lazySingleton<_i342.DioLogInterceptor>(() => _i342.DioLogInterceptor());
@@ -107,6 +123,13 @@ extension GetItInjectableX on _i174.GetIt {
           dioClient: gh<_i361.Dio>(),
           appPref: gh<_i825.SharedPrefServices>(),
         ));
+    gh.factory<_i54.CreateAccUserRemoteDataSource>(() =>
+        _i966.CreateAccUserRemoteDataSourceImpl(
+            apiConsumer: gh<_i550.ApiConsumer>()));
+    gh.factory<_i183.CreateAccUserRepository>(() =>
+        _i439.CreateAccUserRepositoryImpl(
+            createAccUserRemoteDataSource:
+                gh<_i54.CreateAccUserRemoteDataSource>()));
     gh.factory<_i772.SettingRemoteDataSource>(() =>
         _i940.SettingRemoteDataSourceImpl(
             apiConsumer: gh<_i550.ApiConsumer>()));
@@ -118,29 +141,33 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i690.AuthRemoteDataSource>(() =>
         _i258.AuthRemoteDataSourceImpl(apiConsumer: gh<_i550.ApiConsumer>()));
-    gh.factory<_i843.CreateAccUserRemoteDataSource>(() =>
-        _i1049.CreateAccUserRemoteDataSourceImpl(
+    gh.factory<_i1030.SelectLocationRemoteDataSource>(() =>
+        _i1052.SelectLocationRemoteDataSourceImpl(
             apiConsumer: gh<_i550.ApiConsumer>()));
-    gh.factory<_i563.CreateAccUserRepository>(() =>
-        _i754.CreateAccUserRepositoryImpl(
-            createAccUserRemoteDataSource:
-                gh<_i843.CreateAccUserRemoteDataSource>()));
+    gh.factory<_i277.SelectLocationRepository>(() =>
+        _i820.SelectLocationRepositoryImpl(
+            remoteDataSource: gh<_i1030.SelectLocationRemoteDataSource>()));
     gh.factory<_i282.AuthRepository>(() => _i877.AuthRepositoryImpl(
           authRemoteDataSource: gh<_i690.AuthRemoteDataSource>(),
           authLocalDataSource: gh<_i145.AuthLocalDataSource>(),
         ));
-    gh.factory<_i222.LoginCubit>(() => _i222.LoginCubit(
+    gh.factory<_i378.SelectLocationCubit>(() => _i378.SelectLocationCubit(
+          gh<_i277.SelectLocationRepository>(),
+          gh<_i224.UserCubit>(),
+          gh<_i282.AuthRepository>(),
+        ));
+    gh.factory<_i775.LoginCubit>(() => _i775.LoginCubit(
           gh<_i282.AuthRepository>(),
           gh<_i861.AppFirebase>(),
           gh<_i227.DeviceInfo>(),
         ));
-    gh.factory<_i232.PinCodeCubit>(() => _i232.PinCodeCubit(
+    gh.lazySingleton<_i768.CreateAccUserCubit>(() => _i768.CreateAccUserCubit(
+          gh<_i183.CreateAccUserRepository>(),
           gh<_i282.AuthRepository>(),
           gh<_i894.SettingRepository>(),
           gh<_i224.UserCubit>(),
         ));
-    gh.factory<_i372.CreateAccUserCubit>(() => _i372.CreateAccUserCubit(
-          gh<_i563.CreateAccUserRepository>(),
+    gh.factory<_i232.PinCodeCubit>(() => _i232.PinCodeCubit(
           gh<_i282.AuthRepository>(),
           gh<_i894.SettingRepository>(),
           gh<_i224.UserCubit>(),

@@ -43,28 +43,57 @@ class _RegisterState extends State<register> {
 
  */
 
-class Register extends StatefulWidget {
-  const Register({super.key});
+class RegisterPageContent extends StatefulWidget {
+  const RegisterPageContent({super.key});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<RegisterPageContent> createState() => _RegisterPageContentState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterPageContentState extends State<RegisterPageContent> {
+
+
+  // final LoginPageController controller = LoginPageController();
+
+
+  late final CreateAccUserCubit? _createAccUserCubit;
+
   @override
   void initState() {
     super.initState();
+    try {
+      _createAccUserCubit = CreatAccountHelper.instance.createAccUserCubit;
+      _createAccUserCubit!.fetchCities();
+    } catch (e) {
+      _createAccUserCubit = null;
+      print(' inisde the page GetIt initialized: ${getIt.isRegistered<CreateAccUserCubit>()}');
+      // Log the error
+      debugPrint('Error getting CreateAccUserCubit: $e');
+      // You might want to create a fallback or show an error
+    }
   }
 
   @override
+  void dispose() {
+    _createAccUserCubit?.close();
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
+    if (_createAccUserCubit == null) {
+      return Scaffold(
+        body: Center(
+          child: Text('Error loading dependencies'),
+        ),
+      );
+    }
     return MultiBlocProvider(
       providers: [
         BlocProvider<UserCubit>(
-          create: (_) => getIt<UserCubit>(), // UserCubit موجود للصفحة كلها
+          create: (_) => getIt<UserCubit>(),
         ),
-        BlocProvider<CreateAccUserCubit>(
-          create: (context) => getIt<CreateAccUserCubit>()..fetchCities(),
+        BlocProvider<CreateAccUserCubit>.value(
+          value: _createAccUserCubit,
         ),
       ],
       child: Scaffold(
@@ -79,9 +108,9 @@ class _RegisterState extends State<Register> {
               children: [
                 LoginPageTextTitle(),
                 SizedBox(height: 30),
-                LoginPageScreen(),
+                LoginPageScreen(cubit: _createAccUserCubit ),
                 SizedBox(height: 20),
-                LoginPageShowBottomsheet(), // الزر موجود هنا
+                LoginPageShowBottomsheet(cubit: _createAccUserCubit),
               ],
             ),
           ),
