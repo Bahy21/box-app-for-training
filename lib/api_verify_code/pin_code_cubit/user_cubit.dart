@@ -10,7 +10,7 @@ import '../user_model.dart';
 
 part 'user_state.dart';
 
-@lazySingleton
+@injectable
 class UserCubit extends Cubit<UserState> {
   final SharedPrefServices appPref;
 
