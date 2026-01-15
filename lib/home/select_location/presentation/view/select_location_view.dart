@@ -2,9 +2,12 @@ import 'package:box_app/core/di/di.dart';
 import 'package:box_app/home/select_location/presentation/view/widgets/custom_current_location_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../../../core/widgets/custom_error.dart';
+import '../../../../core/widgets/custom_loading.dart';
 import '../args/select_location_arg.dart';
 import '../cubits/select_location_cubit/select_location_cubit.dart';
 
@@ -47,7 +50,8 @@ class _SelectLocationViewState extends State<SelectLocationView> {
         child: BlocBuilder<SelectLocationCubit, SelectLocationState>(
           builder: (context, state) {
             final cubit = BlocProvider.of<SelectLocationCubit>(context);
-            return Stack(
+            return
+              Stack(
                   children: [
                     GoogleMap(
                       onMapCreated: cubit.onMapCreate,
