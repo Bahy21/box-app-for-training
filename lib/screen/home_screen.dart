@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../home/select_location/presentation/args/select_location_arg.dart';
+import '../home/select_location/presentation/view/select_location_view.dart';
 import '../home/send_otp_page/send_otp_page.dart';
 import '../home/show_registration_screen/show_registration_screen_import.dart';
 
@@ -225,7 +227,7 @@ class SplashScreensButtonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.sizeOf(context).width;
 
     return GestureDetector(
       onTap: () {
